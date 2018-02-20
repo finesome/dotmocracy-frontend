@@ -36,4 +36,4 @@ Open your terminal or cmd in the project folder and type:
 ```
 npm start
 ```
-This should start the application on localhost:3000. Go to http://localhost:8080/test and if you see a page, then everything works fine!
+This should start the application on localhost:3000. Go to http://localhost:3000 and if you see a page, then everything works fine!
