@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import colors from '../../res/colors.json';
 
 import TextInput from '../TextInput';
 import CountableTextInput from '../CountableTextInput';
@@ -17,10 +18,9 @@ const Fade = styled.div`
 `;
 
 const Modal = styled.div`
-    width: 400px;
-    height: 365px;
-    padding: 16px;
-    background-color: #ffffff;
+    width: 320px;
+    padding: 16px 40px;
+    background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 `;
 
@@ -31,16 +31,81 @@ const Logo = styled.div`
     background-color: #944040;
 `;
 
+const FormSubmitWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+`;
+
+const LinkWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+const Link = styled.a`
+    font-size: 18px;
+    text-decoration-line: underline;
+    color: ${colors.linkBlue};
+    cursor: pointer;
+`;
+
+const StyledButton = styled.button`
+    display: block;
+    float: right;
+    border: none;
+    cursor: pointer;
+    
+    background-color: ${colors.accent};
+    padding: 12px 18px;
+    
+    text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+`;
+
 export default class LoginRegister extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            isLogin: true
+        }
+    }
+
+    clickHandler() {
+        this.setState( {
+            isLogin: !this.state.isLogin
+        } );
+    }
+
     render() {
         return (
             <Fade>
                 <Modal>
-                    <Logo />
+                    <Logo/>
                     <form>
-                        <TextInput type="email" hint="Email" />
-                        <CountableTextInput type="password" hint="Password" maxLength="30" />                        
-                    </form>                
+                        <TextInput type="email" hint="Email"/>
+                        <CountableTextInput type="password" hint="Password" maxLength="30"/>
+                        {this.state.isLogin
+                            ? <FormSubmitWrapper>
+                                <LinkWrapper>
+                                    <Link onClick={this.clickHandler.bind( this )}>Need an account?</Link>
+                                    <Link>Forgot password?</Link>
+                                </LinkWrapper>
+                                <StyledButton>Login</StyledButton>
+                            </FormSubmitWrapper>
+                            : <FormSubmitWrapper>
+                                <LinkWrapper>
+                                    <Link onClick={this.clickHandler.bind( this )}>Have an account?</Link>
+                                </LinkWrapper>
+                                <StyledButton>Register</StyledButton>
+                            </FormSubmitWrapper>
+                        }
+                    </form>
                 </Modal>
             </Fade>
         );

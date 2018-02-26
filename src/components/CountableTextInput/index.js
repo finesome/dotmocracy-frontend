@@ -5,9 +5,11 @@ import TextInput from '../TextInput';
 
 const StyledCounter = styled.span`
     display: block;
-    float: right;
+    width: 100%;
+    text-align: right;
     color: rgba(0, 0, 0, 0.54);
     font-size: 12px;
+    margin-top: 4px;
 `;
 
 export default class CountableTextInput extends Component {
