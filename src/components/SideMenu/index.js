@@ -56,7 +56,7 @@ export default class SideMenu extends Component {
         let menuItems = [];
         for ( let i = 0; i < this.menuItemsOrder.length; i++ ) {
             menuItems.push(
-                <MenuItem>
+                <MenuItem key={"menu-item-" + i}>
                     <MenuItemIcon src={this.menuItemsOrder[i].icon}/>
                     <MenuItemLabel>{this.menuItemsOrder[i].text}</MenuItemLabel>
                 </MenuItem>
