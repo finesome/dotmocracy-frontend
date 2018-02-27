@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../res/colors.json';
-import icon_home from '../../../public/icons/ic_dashboard.svg';
-import icon_group from '../../../public/icons/ic_people.svg';
-import icon_add from '../../../public/icons/ic_add_board.svg';
-import icon_settings from '../../../public/icons/ic_settings.svg';
-import icon_logout from '../../../public/icons/ic_logout.svg';
+import icon_home from '../../res/icons/ic_dashboard.svg';
+import icon_group from '../../res/icons/ic_people.svg';
+import icon_add from '../../res/icons/ic_add_board.svg';
+import icon_settings from '../../res/icons/ic_settings.svg';
+import icon_logout from '../../res/icons/ic_logout.svg';
 
 const SideDiv = styled.div`
     width: 240px;
