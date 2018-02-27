@@ -54,13 +54,16 @@ const Link = styled.a`
 const StyledButton = styled.button`
     display: block;
     float: right;
+    width: 128px;
+    height: 48px;
+    
     border: none;
     cursor: pointer;
     
-    background-color: ${colors.accent};
-    padding: 12px 18px;
-    
     text-transform: uppercase;
+    background-color: ${colors.accent};
+    padding: 12px 0;
+    
     color: white;
     font-size: 20px;
     border-radius: 4px;
