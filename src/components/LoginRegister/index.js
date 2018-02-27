@@ -11,7 +11,7 @@ const Fade = styled.div`
     justify-content: center;
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
@@ -75,8 +75,19 @@ export default class LoginRegister extends Component {
         super();
 
         this.state = {
-            isLogin: true
+            visible: true,
+            isLogin: true,
         }
+    }
+
+    visibilityHandler() {
+        this.setState( {
+            visible: !this.state.visible
+        } );
+    }
+
+    defaultClickHandler( event ) {
+        event.stopPropagation();
     }
 
     clickHandler() {
@@ -87,30 +98,32 @@ export default class LoginRegister extends Component {
 
     render() {
         return (
-            <Fade>
-                <Modal>
-                    <Logo/>
-                    <form>
-                        <TextInput type="email" hint="Email"/>
-                        <CountableTextInput type="password" hint="Password" maxLength="30"/>
-                        {this.state.isLogin
-                            ? <FormSubmitWrapper>
-                                <LinkWrapper>
-                                    <Link onClick={this.clickHandler.bind( this )}>Need an account?</Link>
-                                    <Link>Forgot password?</Link>
-                                </LinkWrapper>
-                                <StyledButton>Login</StyledButton>
-                            </FormSubmitWrapper>
-                            : <FormSubmitWrapper>
-                                <LinkWrapper>
-                                    <Link onClick={this.clickHandler.bind( this )}>Have an account?</Link>
-                                </LinkWrapper>
-                                <StyledButton>Register</StyledButton>
-                            </FormSubmitWrapper>
-                        }
-                    </form>
-                </Modal>
-            </Fade>
+            this.state.visible
+                ? <Fade onClick={this.visibilityHandler.bind( this )}>
+                    <Modal onClick={this.defaultClickHandler}>
+                        <Logo/>
+                        <form>
+                            <TextInput type="email" hint="Email"/>
+                            <CountableTextInput type="password" hint="Password" maxLength="30"/>
+                            {this.state.isLogin
+                                ? <FormSubmitWrapper>
+                                    <LinkWrapper>
+                                        <Link onClick={this.clickHandler.bind( this )}>Need an account?</Link>
+                                        <Link>Forgot password?</Link>
+                                    </LinkWrapper>
+                                    <StyledButton>Login</StyledButton>
+                                </FormSubmitWrapper>
+                                : <FormSubmitWrapper>
+                                    <LinkWrapper>
+                                        <Link onClick={this.clickHandler.bind( this )}>Have an account?</Link>
+                                    </LinkWrapper>
+                                    <StyledButton>Register</StyledButton>
+                                </FormSubmitWrapper>
+                            }
+                        </form>
+                    </Modal>
+                </Fade>
+                : null
         );
     }
 }
