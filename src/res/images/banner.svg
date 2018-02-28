@@ -1,0 +1,168 @@
+<svg width="516" height="504" viewBox="0 0 516 504" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Picture</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-334 32)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 334 -32L 850 -32L 850 472L 334 472L 334 -32Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Picture" clip-path="url(#clip-0)">
+<clipPath id="clip-1" clip-rule="evenodd">
+<path d="M 850 281L 537 281L 537 -32L 850 -32L 850 281Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Pie chart" clip-path="url(#clip-1)">
+<g id="Ellipse">
+<use xlink:href="#path0_fill" transform="matrix(-1 1.22465e-16 -1.22465e-16 -1 850 281)" fill="#82B93A"/>
+</g>
+<g id="Ellipse">
+<use xlink:href="#path1_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 537 281)" fill="#E3AAD6"/>
+</g>
+<g id="Ellipse 2">
+<use xlink:href="#path2_fill" transform="matrix(6.12323e-17 1 -1 6.12323e-17 850 -32)" fill="#007C9C"/>
+</g>
+</g>
+<clipPath id="clip-2" clip-rule="evenodd">
+<path d="M 334 68L 574 68L 574 368L 334 368L 334 68Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="List3" clip-path="url(#clip-2)">
+<path d="M 334 68L 574 68L 574 368L 334 368L 334 68Z" fill="#E3AAD6"/>
+<g id="Rectangle">
+<use xlink:href="#path3_fill" transform="translate(358 92)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path4_fill" transform="translate(358 120)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 160)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 176)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 192)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 208)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 224)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 240)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 256)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 272)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 288)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 320)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(358 336)" fill="#000000" fill-opacity="0.36"/>
+</g>
+</g>
+<clipPath id="clip-3" clip-rule="evenodd">
+<path d="M 414 120L 654 120L 654 420L 414 420L 414 120Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="List2" clip-path="url(#clip-3)">
+<path d="M 414 120L 654 120L 654 420L 414 420L 414 120Z" fill="#007C9C"/>
+<g id="Rectangle">
+<use xlink:href="#path3_fill" transform="translate(438 144)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path4_fill" transform="translate(438 172)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 212)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 228)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 244)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 260)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 276)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 292)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 308)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 324)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 340)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 372)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(438 388)" fill="#000000" fill-opacity="0.36"/>
+</g>
+</g>
+<clipPath id="clip-4" clip-rule="evenodd">
+<path d="M 494 172L 734 172L 734 472L 494 472L 494 172Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="List1" clip-path="url(#clip-4)">
+<path d="M 494 172L 734 172L 734 472L 494 472L 494 172Z" fill="#82B93A"/>
+<g id="Rectangle">
+<use xlink:href="#path3_fill" transform="translate(518 196)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path4_fill" transform="translate(518 224)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 264)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 280)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 296)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 312)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 328)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 344)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 360)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 376)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 392)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 424)" fill="#000000" fill-opacity="0.36"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path5_fill" transform="translate(518 440)" fill="#000000" fill-opacity="0.36"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 313 156.5C 313 242.933 242.933 313 156.5 313C 70.0674 313 0 242.933 0 156.5C 0 70.0674 70.0674 0 156.5 0C 242.933 0 313 70.0674 313 156.5Z"/>
+<path id="path1_fill" d="M 156.5 156.5C 156.5 242.933 156.5 156.5 156.5 313C 70.0674 313 0 242.933 0 156.5C 0 70.0674 70.0674 0 156.5 0C 156.5 156.5 156.5 70.0674 156.5 156.5Z"/>
+<path id="path2_fill" d="M 156.5 156.5C 70.0674 156.5 71.7707 156.5 0 156.5C 0 70.0674 70.0674 0 156.5 0C 156.5 69.4448 156.5 70.0674 156.5 156.5Z"/>
+<path id="path3_fill" d="M 0 8C 0 3.58172 3.58172 0 8 0L 184 0C 188.418 0 192 3.58172 192 8C 192 12.4183 188.418 16 184 16L 8 16C 3.58172 16 0 12.4183 0 8Z"/>
+<path id="path4_fill" d="M 0 8C 0 3.58172 3.58172 0 8 0L 152 0C 156.418 0 160 3.58172 160 8C 160 12.4183 156.418 16 152 16L 8 16C 3.58172 16 0 12.4183 0 8Z"/>
+<path id="path5_fill" d="M 0 4C 0 1.79086 1.79086 0 4 0L 188 0C 190.209 0 192 1.79086 192 4C 192 6.20914 190.209 8 188 8L 4 8C 1.79086 8 0 6.20914 0 4Z"/>
+</defs>
+</svg>
