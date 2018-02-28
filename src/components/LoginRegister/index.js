@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import colors from '../../res/colors.json';
 
 import TextInput from '../TextInput';
-import CountableTextInput from '../CountableTextInput';
 
 const Fade = styled.div`
     display: flex;
@@ -46,6 +45,7 @@ const LinkWrapper = styled.div`
 
 const Link = styled.a`
     font-size: 18px;
+    line-height: 22px;
     font-stretch: condensed;
     text-decoration-line: underline;
     color: ${colors.linkBlue};
@@ -79,45 +79,73 @@ export default class LoginRegister extends Component {
         super();
 
         this.state = {
+            email: "",
+            password: "",
             visible: true,
             isLogin: true,
         }
     }
 
     visibilityHandler() {
-        this.setState( {
-            visible: !this.state.visible
-        } );
+        this.setState( ( prevState ) => ({
+            ...this.state,
+            visible: !prevState.visible
+        }) );
     }
 
     actionChangeHandler() {
-        this.setState( {
-            isLogin: !this.state.isLogin
-        } );
+        this.setState( ( prevState ) => ({
+            ...this.state,
+            isLogin: !prevState.isLogin
+        }) );
     }
+
+    submitForm(event) {
+        event.preventDefault();
+        switch (event.target.name) {
+            case "login":
+                console.log("me logging in", this.state.email, this.state.password);
+                break;
+            case "register":
+                console.log("me registering", this.state.email, this.state.password);
+                break;
+            default:
+                break;
+        }
+    }
+
+    inputChangeHandler(event) {
+        this.setState({
+            ...this.state,
+            [event.target.type]: event.target.value,
+        });
+    }
+
 
     render() {
         return (
             this.state.visible
                 ? <Fade onClick={this.visibilityHandler.bind( this )}>
-                    <Modal onClick={ event => { event.stopPropagation() } }>
+                    <Modal onClick={event => { event.stopPropagation()}}>
                         <Logo/>
                         <form>
-                            <TextInput type="email" hint="Email"/>
-                            <CountableTextInput type="password" hint="Password" maxLength="30"/>
+                            <TextInput type="email" name="email" hint="Email"
+                                       onChange={this.inputChangeHandler.bind(this)}/>
+                            <TextInput type="password" name="password" hint="Password" maxLength="30"
+                                       onChange={this.inputChangeHandler.bind(this)}/>
                             {this.state.isLogin
                                 ? <FormSubmitWrapper>
                                     <LinkWrapper>
                                         <Link onClick={this.actionChangeHandler.bind( this )}>Need an account?</Link>
                                         <Link>Forgot password?</Link>
                                     </LinkWrapper>
-                                    <StyledButton>Login</StyledButton>
+                                    <StyledButton name="login" onClick={this.submitForm.bind( this )}>Login</StyledButton>
                                 </FormSubmitWrapper>
                                 : <FormSubmitWrapper>
                                     <LinkWrapper>
                                         <Link onClick={this.actionChangeHandler.bind( this )}>Have an account?</Link>
                                     </LinkWrapper>
-                                    <StyledButton>Register</StyledButton>
+                                    <StyledButton name="register" onClick={this.submitForm.bind( this )}>Register</StyledButton>
                                 </FormSubmitWrapper>
                             }
                         </form>
