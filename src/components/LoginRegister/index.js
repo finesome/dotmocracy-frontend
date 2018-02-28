@@ -87,7 +87,7 @@ export default class LoginRegister extends Component {
     }
 
     defaultClickHandler( event ) {
-        event.stopPropagation();
+        event.stopPropagation();        
     }
 
     clickHandler() {
