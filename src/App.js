@@ -6,8 +6,6 @@ import LoginRegister from './components/LoginRegister';
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
 
-import NotFound from "./scenes/NotFound";
-
 export default class App extends Component {
     render() {
         return (
@@ -18,7 +16,7 @@ export default class App extends Component {
                 {/*</header>*/}
                 <Header/>
                 <SideMenu/>
-                <LoginRegister/>
+                <LoginRegister/>                
             </div>
         );
     }
