@@ -3,5 +3,6 @@
     "primaryDark": "#2C3E50",
     "primary": "#354B60",
     "primaryGray": "#818181",
-    "linkBlue": "#2196F3"
+    "linkBlue": "#2196F3",
+    "background": "#F1F2F7"
 }

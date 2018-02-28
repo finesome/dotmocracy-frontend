@@ -16,9 +16,33 @@
     src: url("res/fonts/Roboto-Medium.ttf");
 }
 
+@font-face {
+    font-family: Ubuntu;
+    font-stretch: normal;
+    src: url("res/fonts/Ubuntu-R.ttf");
+}
 
-.App * {
-    /*text-align: center;*/
-    font-family: Roboto;
+@font-face {
+    font-family: Ubuntu;
+    font-stretch: condensed;
+    src: url("res/fonts/Ubuntu-L.ttf");
+}
+
+@font-face {
+    font-family: Ubuntu;
+    font-stretch: expanded;
+    src: url("res/fonts/Ubuntu-M.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
     font-stretch: normal;
 }
+
+h1, h2, h3, h4, h5, h6, .header {
+    font-family: Ubuntu, sans-serif;
+    font-weight: normal;
+}
+

@@ -25,11 +25,12 @@ const Burger = styled.button`
     margin: 16px;
 `;
 
-const SiteName = styled.span`
+const SiteName = styled.h1`
     font-size: 28px;
     line-height: 32px;
     color: white;
     text-transform: uppercase;
+    font-stretch: condensed;
 `;
 
 const SiteInfoWrapper = styled.div`
