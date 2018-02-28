@@ -16,7 +16,7 @@ export default class App extends Component {
                 {/*</header>*/}
                 <Header/>
                 <SideMenu/>
-                <LoginRegister/>                
+                <LoginRegister/>
             </div>
         );
     }
