@@ -46,6 +46,7 @@ const LinkWrapper = styled.div`
 
 const Link = styled.a`
     font-size: 18px;
+    font-stretch: condensed;
     text-decoration-line: underline;
     color: ${colors.linkBlue};
     cursor: pointer;
@@ -60,12 +61,15 @@ const StyledButton = styled.button`
     border: none;
     cursor: pointer;
     
+    
     text-transform: uppercase;
     background-color: ${colors.accent};
     padding: 12px 0;
     
     color: white;
     font-size: 20px;
+    line-height: 24px;
+    font-stretch: expanded;
     border-radius: 4px;
 `;
 
@@ -86,11 +90,7 @@ export default class LoginRegister extends Component {
         } );
     }
 
-    defaultClickHandler( event ) {
-        event.stopPropagation();        
-    }
-
-    clickHandler() {
+    actionChangeHandler() {
         this.setState( {
             isLogin: !this.state.isLogin
         } );
@@ -100,7 +100,7 @@ export default class LoginRegister extends Component {
         return (
             this.state.visible
                 ? <Fade onClick={this.visibilityHandler.bind( this )}>
-                    <Modal onClick={this.defaultClickHandler}>
+                    <Modal onClick={ event => { event.stopPropagation() } }>
                         <Logo/>
                         <form>
                             <TextInput type="email" hint="Email"/>
@@ -108,14 +108,14 @@ export default class LoginRegister extends Component {
                             {this.state.isLogin
                                 ? <FormSubmitWrapper>
                                     <LinkWrapper>
-                                        <Link onClick={this.clickHandler.bind( this )}>Need an account?</Link>
+                                        <Link onClick={this.actionChangeHandler.bind( this )}>Need an account?</Link>
                                         <Link>Forgot password?</Link>
                                     </LinkWrapper>
                                     <StyledButton>Login</StyledButton>
                                 </FormSubmitWrapper>
                                 : <FormSubmitWrapper>
                                     <LinkWrapper>
-                                        <Link onClick={this.clickHandler.bind( this )}>Have an account?</Link>
+                                        <Link onClick={this.actionChangeHandler.bind( this )}>Have an account?</Link>
                                     </LinkWrapper>
                                     <StyledButton>Register</StyledButton>
                                 </FormSubmitWrapper>

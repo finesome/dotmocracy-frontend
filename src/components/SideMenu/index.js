@@ -20,7 +20,7 @@ const SideDiv = styled.div`
 
 const MenuItem = styled.div`
     width: 100%;
-    height: 80px;
+    height: 64px;
     
     display: flex;
     align-items: center;

@@ -8,6 +8,7 @@ const StyledDiv = styled.div`
 
 const StyledInput = styled.input`
     font-size: 24px;
+    line-height: 28px;
     border: none;
     border-bottom: 2px solid ${colors.primaryGray};
     width: 100%;
