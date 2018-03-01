@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+
 const Title = styled.h1`
-    font-size:55px;
+    font-size: 9vh;
+    line-height: 12vh;
+    font-stretch: expanded;
 `;
 
 const SubTitle = styled.h2`
-    margin-bottom: 30px;
-    font-size: 30px;
-`
+    font-size: 5vh;
+    line-height: 5vh;
+`;
 
 const P = styled.p`
-    font-size: 22px;
+    font-size: 4vh;
+    line-height: 5vh;
+    
+    margin: 4vh 0;
 `;
 
 
-
-export default class Banner extends Component {
+export default class Text extends Component {
     render() {
         return (
             <div>

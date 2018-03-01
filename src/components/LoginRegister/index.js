@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import colors from '../../res/colors.json';
 
-import TextInput from '../TextInput';
-import CountableTextInput from '../CountableTextInput';
+import TextInput from 'components/TextInput';
+import Button from 'components/Button';
+import Link from 'components/Link';
+import Card from 'components/Card';
 
 const Fade = styled.div`
     display: flex;
@@ -11,17 +12,15 @@ const Fade = styled.div`
     justify-content: center;
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
 `;
 
-const Modal = styled.div`
+const Modal = styled( Card )`
+    padding: 24px;
     width: 320px;
-    padding: 16px 40px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 `;
 
 const Logo = styled.div`
@@ -44,29 +43,20 @@ const LinkWrapper = styled.div`
     justify-content: center;
 `;
 
-const Link = styled.a`
+const LoginLink = styled( Link )`
     font-size: 18px;
-    text-decoration-line: underline;
-    color: ${colors.linkBlue};
-    cursor: pointer;
+    line-height: 24px;
 `;
 
-const StyledButton = styled.button`
-    display: block;
+const StyledButton = styled( Button )`
     float: right;
     width: 128px;
     height: 48px;
-    
-    border: none;
-    cursor: pointer;
-    
-    text-transform: uppercase;
-    background-color: ${colors.accent};
+ 
     padding: 12px 0;
     
-    color: white;
     font-size: 20px;
-    border-radius: 4px;
+    line-height: 24px;
 `;
 
 export default class LoginRegister extends Component {
@@ -75,42 +65,84 @@ export default class LoginRegister extends Component {
         super();
 
         this.state = {
-            isLogin: true
+            email: "",
+            password: "",
+            visible: true,
+            isLogin: true,
         }
     }
 
-    clickHandler() {
+    visibilityHandler() {
+        this.setState( ( prevState ) => ({
+            ...this.state,
+            visible: !prevState.visible
+        }) );
+    }
+
+    actionChangeHandler() {
+        this.setState( ( prevState ) => ({
+            ...this.state,
+            isLogin: !prevState.isLogin
+        }) );
+    }
+
+    submitForm( event ) {
+        event.preventDefault();
+        switch ( event.target.name ) {
+            case "login":
+                console.log( "me logging in", this.state.email, this.state.password );
+                break;
+            case "register":
+                console.log( "me registering", this.state.email, this.state.password );
+                break;
+            default:
+                break;
+        }
+    }
+
+    inputChangeHandler( event ) {
         this.setState( {
-            isLogin: !this.state.isLogin
+            ...this.state,
+            [event.target.type]: event.target.value,
         } );
     }
 
+
     render() {
         return (
-            <Fade>
-                <Modal>
-                    <Logo/>
-                    <form>
-                        <TextInput type="email" hint="Email"/>
-                        <CountableTextInput type="password" hint="Password" maxLength="30"/>
-                        {this.state.isLogin
-                            ? <FormSubmitWrapper>
-                                <LinkWrapper>
-                                    <Link onClick={this.clickHandler.bind( this )}>Need an account?</Link>
-                                    <Link>Forgot password?</Link>
-                                </LinkWrapper>
-                                <StyledButton>Login</StyledButton>
-                            </FormSubmitWrapper>
-                            : <FormSubmitWrapper>
-                                <LinkWrapper>
-                                    <Link onClick={this.clickHandler.bind( this )}>Have an account?</Link>
-                                </LinkWrapper>
-                                <StyledButton>Register</StyledButton>
-                            </FormSubmitWrapper>
-                        }
-                    </form>
-                </Modal>
-            </Fade>
+            this.state.visible
+                ? <Fade onClick={this.visibilityHandler.bind( this )}>
+                    <Modal onClick={event => {
+                        event.stopPropagation()
+                    }}>
+                        <Logo/>
+                        <form>
+                            <TextInput type="email" name="email" hint="Email"
+                                       onChange={this.inputChangeHandler.bind( this )}/>
+                            <TextInput type="password" name="password" hint="Password" maxLength="30"
+                                       onChange={this.inputChangeHandler.bind( this )}/>
+                            {this.state.isLogin
+                                ? <FormSubmitWrapper>
+                                    <LinkWrapper>
+                                        <LoginLink onClick={this.actionChangeHandler.bind( this )}>Need an
+                                            account?</LoginLink>
+                                        <LoginLink>Forgot password?</LoginLink>
+                                    </LinkWrapper>
+                                    <StyledButton name="login" onClick={this.submitForm.bind( this )}>Login</StyledButton>
+                                </FormSubmitWrapper>
+                                : <FormSubmitWrapper>
+                                    <LinkWrapper>
+                                        <LoginLink onClick={this.actionChangeHandler.bind( this )}>Have an
+                                            account?</LoginLink>
+                                    </LinkWrapper>
+                                    <StyledButton name="register"
+                                                  onClick={this.submitForm.bind( this )}>Register</StyledButton>
+                                </FormSubmitWrapper>
+                            }
+                        </form>
+                    </Modal>
+                </Fade>
+                : null
         );
     }
 }

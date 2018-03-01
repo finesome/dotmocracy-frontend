@@ -1,76 +1,79 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import LoginButton from '../../components/LoginButton';
+import colors from 'res/colors.json';
+import bannerImage from 'res/images/banner.svg';
 
-import Banner from './components/Banner';
 import Text from './components/Text';
+import LoginButton from './components/LoginButton';
 import Footer from './components/Footer';
-
-// import colors from '../../res/colors.json';
 
 
 const Background = styled.div`
-    background-color: #2C3E50;
-    max-height:100vh;
-    max-width:100%;
-    color:white;
-    font-family:'Ubuntu';
-    min-height:100vh;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
+    
+    height: 100vh;
+    width: 100%;
+    
+    background-color: ${colors.primaryDark};
+    
+    color: white;
 `;
 
 const BodyWrapper = styled.div`
-    background-color: #354B60;
-    display:flex;
-    justify-content:center;
-    height:80vh;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 80vh;
+    background-color: ${colors.primary};
 `;
 
 const Block = styled.div`
-    width: 400px;
-    height: 300px;
-    margin: 30px;
+    height: 80%;
+    max-width: 40%;
+    
+    margin: 2%;
 `;
 
-const RightBlock = styled(Block)`
+const RightBlock = styled( Block )`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
     text-align: left;
-`
+`;
+
+const Banner = styled.img`
+    height: 100%;
+    max-width: 100%;
+`;
 
 const Header = styled.div`
     height: 10vh;
 `;
 
 
-
-
 export default class Landing extends Component {
 
-    onButtonClick(){
-        console.log('login button clicked');
+    render() {
+        return (
+            <div>
+                <Background>
+                    <Header/>
+                    <BodyWrapper>
+                        <Block>
+                            <Banner src={bannerImage} alt="banner"/>
+                        </Block>
+                        <RightBlock>
+                            <Text/>
+                            <LoginButton text="Sign in"/>
+                        </RightBlock>
+                    </BodyWrapper>
+                    <Footer/>
+                </Background>
+            </div>
+        );
     }
-
-    
-  render() {
-    return (
-      <div>
-        <Background>
-            <Header/>
-            <BodyWrapper >
-                <Banner/>
-                <RightBlock>
-                    <Text/>
-                    <LoginButton  onClick = {this.onButtonClick.bind(this)} text="Sign in"/>
-                </RightBlock>
-            </BodyWrapper>
-            <Footer/>
-        </Background>
-      </div>
-    );
-  }
 }

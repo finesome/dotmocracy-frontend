@@ -1,0 +1,14 @@
+<svg width="56" height="56" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>avatar</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-1818 232)">
+<g id="avatar">
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(1818 -232)" fill="#F5F8FA"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 28 0C 12.544 0 0 12.544 0 28C 0 43.456 12.544 56 28 56C 43.456 56 56 43.456 56 28C 56 12.544 43.456 0 28 0ZM 28 8.4C 32.648 8.4 36.4 12.152 36.4 16.8C 36.4 21.448 32.648 25.2 28 25.2C 23.352 25.2 19.6 21.448 19.6 16.8C 19.6 12.152 23.352 8.4 28 8.4ZM 28 48.16C 21 48.16 14.812 44.576 11.2 39.144C 11.284 33.572 22.4 30.52 28 30.52C 33.572 30.52 44.716 33.572 44.8 39.144C 41.188 44.576 35 48.16 28 48.16Z"/>
+</defs>
+</svg>

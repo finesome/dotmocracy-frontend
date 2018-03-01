@@ -1,0 +1,14 @@
+<svg width="32" height="32" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>burger</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(6 220)">
+<g id="burger">
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(-4 -213)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 28 0L 28 3.16667L 0 3.16667L 0 0ZM 0 7.91667L 28 7.91667L 28 11.0833L 0 11.0833L 0 7.91667ZM 0 15.8333L 28 15.8333L 28 19L 0 19L 0 15.8333Z"/>
+</defs>
+</svg>
