@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import colors from '../../res/colors.json';
-import burger from '../../res/icons/burger.svg';
-import avatar from '../../res/icons/avatar_placeholder.svg';
+import colors from 'res/colors.json';
+import burger from 'res/icons/burger.svg';
+import avatar from 'res/icons/avatar_placeholder.svg';
 
 const HeaderDiv = styled.div`
     width: 100%;
@@ -40,7 +40,9 @@ const SiteInfoWrapper = styled.div`
 `;
 
 const UserName = styled.span`
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 24px;
+    font-stretch: condensed;
     color: white;
 `;
 

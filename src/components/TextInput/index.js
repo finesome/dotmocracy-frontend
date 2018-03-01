@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import colors from '../../res/colors.json';
+import colors from 'res/colors.json';
 
 const StyledDiv = styled.div`
     text-align: left;
@@ -38,25 +38,25 @@ const StyledCounter = styled.span`
 
 export default class TextInput extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor( props ) {
+        super( props );
 
-        if (this.props.maxLength) {
+        if ( this.props.maxLength ) {
             this.state = {
                 counter: 0
             }
         }
     }
 
-    onChangeHandler(event) {
-        if (this.props.maxLength) {
-            this.setState({
+    onChangeHandler( event ) {
+        if ( this.props.maxLength ) {
+            this.setState( {
                 counter: event.target.value.length
-            });
+            } );
         }
 
-        if (this.props.onChange) {
-            this.props.onChange(event);
+        if ( this.props.onChange ) {
+            this.props.onChange( event );
         }
     }
 
@@ -64,11 +64,12 @@ export default class TextInput extends Component {
         return (
             <StyledDiv>
                 <Hint>{this.props.hint}</Hint>
-                <StyledInput type={this.props.type} maxLength={this.props.maxLength} onChange={this.onChangeHandler.bind(this)}/>
+                <StyledInput type={this.props.type} maxLength={this.props.maxLength}
+                             onChange={this.onChangeHandler.bind( this )}/>
                 {
                     this.props.maxLength ?
-                    <StyledCounter>{this.state.counter}/{this.props.maxLength}</StyledCounter> :
-                    null
+                        <StyledCounter>{this.state.counter}/{this.props.maxLength}</StyledCounter> :
+                        null
                 }
             </StyledDiv>
         );

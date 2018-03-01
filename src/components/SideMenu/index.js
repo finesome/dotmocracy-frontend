@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import colors from '../../res/colors.json';
-import icon_home from '../../res/icons/ic_dashboard.svg';
-import icon_group from '../../res/icons/ic_people.svg';
-import icon_add from '../../res/icons/ic_add_board.svg';
-import icon_settings from '../../res/icons/ic_settings.svg';
-import icon_logout from '../../res/icons/ic_logout.svg';
+import colors from 'res/colors.json';
+import icon_home from 'res/icons/ic_dashboard.svg';
+import icon_group from 'res/icons/ic_people.svg';
+import icon_add from 'res/icons/ic_add_board.svg';
+import icon_settings from 'res/icons/ic_settings.svg';
+import icon_logout from 'res/icons/ic_logout.svg';
 
 const SideDiv = styled.div`
     width: 240px;
     height: 100%;
     
     position: fixed;
-    left: 0;
     top: 64px;
+    left: 0;
     
     background-color: ${colors.primary};
 `;
@@ -36,7 +36,7 @@ const MenuItemLabel = styled.span`
     line-height: 24px;
     font-size: 20px;
     text-transform: capitalize;
-    color: white
+    color: white;
 `;
 
 export default class SideMenu extends Component {

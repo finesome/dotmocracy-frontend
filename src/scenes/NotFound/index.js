@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import notFound from '../../res/images/404.svg';
-import colors from '../../res/colors.json';
+import notFound from 'res/images/404.svg';
+import colors from 'res/colors.json';
 
 const StyledContainer = styled.div`
     display: flex;

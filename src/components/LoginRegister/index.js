@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import colors from '../../res/colors.json';
 
-import TextInput from '../TextInput';
+import TextInput from 'components/TextInput';
+import Button from 'components/Button';
+import Link from 'components/Link';
+import Card from 'components/Card';
 
 const Fade = styled.div`
     display: flex;
@@ -16,11 +18,9 @@ const Fade = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
 `;
 
-const Modal = styled.div`
+const Modal = styled( Card )`
+    padding: 24px;
     width: 320px;
-    padding: 16px 40px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 `;
 
 const Logo = styled.div`
@@ -43,34 +43,20 @@ const LinkWrapper = styled.div`
     justify-content: center;
 `;
 
-const Link = styled.a`
+const LoginLink = styled( Link )`
     font-size: 18px;
-    line-height: 22px;
-    font-stretch: condensed;
-    text-decoration-line: underline;
-    color: ${colors.linkBlue};
-    cursor: pointer;
+    line-height: 24px;
 `;
 
-const StyledButton = styled.button`
-    display: block;
+const StyledButton = styled( Button )`
     float: right;
     width: 128px;
     height: 48px;
-    
-    border: none;
-    cursor: pointer;
-    
-    
-    text-transform: uppercase;
-    background-color: ${colors.accent};
+ 
     padding: 12px 0;
     
-    color: white;
     font-size: 20px;
     line-height: 24px;
-    font-stretch: expanded;
-    border-radius: 4px;
 `;
 
 export default class LoginRegister extends Component {
@@ -100,25 +86,25 @@ export default class LoginRegister extends Component {
         }) );
     }
 
-    submitForm(event) {
+    submitForm( event ) {
         event.preventDefault();
-        switch (event.target.name) {
+        switch ( event.target.name ) {
             case "login":
-                console.log("me logging in", this.state.email, this.state.password);
+                console.log( "me logging in", this.state.email, this.state.password );
                 break;
             case "register":
-                console.log("me registering", this.state.email, this.state.password);
+                console.log( "me registering", this.state.email, this.state.password );
                 break;
             default:
                 break;
         }
     }
 
-    inputChangeHandler(event) {
-        this.setState({
+    inputChangeHandler( event ) {
+        this.setState( {
             ...this.state,
             [event.target.type]: event.target.value,
-        });
+        } );
     }
 
 
@@ -126,26 +112,31 @@ export default class LoginRegister extends Component {
         return (
             this.state.visible
                 ? <Fade onClick={this.visibilityHandler.bind( this )}>
-                    <Modal onClick={event => { event.stopPropagation()}}>
+                    <Modal onClick={event => {
+                        event.stopPropagation()
+                    }}>
                         <Logo/>
                         <form>
                             <TextInput type="email" name="email" hint="Email"
-                                       onChange={this.inputChangeHandler.bind(this)}/>
+                                       onChange={this.inputChangeHandler.bind( this )}/>
                             <TextInput type="password" name="password" hint="Password" maxLength="30"
-                                       onChange={this.inputChangeHandler.bind(this)}/>
+                                       onChange={this.inputChangeHandler.bind( this )}/>
                             {this.state.isLogin
                                 ? <FormSubmitWrapper>
                                     <LinkWrapper>
-                                        <Link onClick={this.actionChangeHandler.bind( this )}>Need an account?</Link>
-                                        <Link>Forgot password?</Link>
+                                        <LoginLink onClick={this.actionChangeHandler.bind( this )}>Need an
+                                            account?</LoginLink>
+                                        <LoginLink>Forgot password?</LoginLink>
                                     </LinkWrapper>
                                     <StyledButton name="login" onClick={this.submitForm.bind( this )}>Login</StyledButton>
                                 </FormSubmitWrapper>
                                 : <FormSubmitWrapper>
                                     <LinkWrapper>
-                                        <Link onClick={this.actionChangeHandler.bind( this )}>Have an account?</Link>
+                                        <LoginLink onClick={this.actionChangeHandler.bind( this )}>Have an
+                                            account?</LoginLink>
                                     </LinkWrapper>
-                                    <StyledButton name="register" onClick={this.submitForm.bind( this )}>Register</StyledButton>
+                                    <StyledButton name="register"
+                                                  onClick={this.submitForm.bind( this )}>Register</StyledButton>
                                 </FormSubmitWrapper>
                             }
                         </form>

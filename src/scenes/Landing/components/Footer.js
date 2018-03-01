@@ -20,5 +20,5 @@ export default class Footer extends Component {
                 <Attribution>© Brogrammers, 2018</Attribution>
             </FooterBlock>
         );
-      }
+    }
 }         

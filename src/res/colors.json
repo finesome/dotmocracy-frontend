@@ -1,8 +1,12 @@
 {
     "accent": "#009688",
-    "primaryDark": "#2C3E50",
+    "accentDark": "#00675b",
     "primary": "#354B60",
+    "primaryDark": "#2C3E50",
     "primaryGray": "#818181",
     "linkBlue": "#2196F3",
-    "background": "#F1F2F7"
+    "background": "#F1F2F7",
+    "darkText": "#333333",
+    "mediumText": "#515151",
+    "dividerGray": "#D8D8D8"
 }
