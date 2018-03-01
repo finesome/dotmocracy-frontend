@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 
-import Header from "components/Header";
-import SideMenu from "components/SideMenu";
+import { Side as SideMenu, Header as HeaderMenu } from "components/Menu";
 
 import Section from "./components/Section";
 
@@ -45,7 +44,7 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div id="Dashboard">
-                <Header/>
+                <HeaderMenu/>
                 <div>
                     <SideMenu/>
                     <SectionWrapper>

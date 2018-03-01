@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 import Link from 'components/Link';
-import Card from 'components/Card';
+import { Card } from 'components/Cards';
 
 const Fade = styled.div`
     display: flex;

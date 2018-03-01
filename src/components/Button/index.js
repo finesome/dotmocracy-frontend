@@ -17,7 +17,7 @@ const Button = styled.button`
     cursor: pointer;
     
     &:focus {
-        outline-width: 0;
+        outline: none;
     }
     
     &:active {

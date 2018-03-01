@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Card from 'components/Card';
+
+import { Wrapper } from 'components/Cards';
+import Header from 'components/Header';
+
 import colors from 'res/colors.json';
-
-const Wrapper = styled( Card )`
-    padding: 16px;
-    margin: 20px;
-    flex: 0 0.8 240px;
-`;
-
-const Header = styled.h1`
-    font-size: 24px;
-    line-height: 28px;
-    margin-bottom: 12px;
-`;
 
 const IdeaList = styled.div`
     width: 100%;

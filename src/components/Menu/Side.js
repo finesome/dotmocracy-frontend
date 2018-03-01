@@ -39,7 +39,7 @@ const MenuItemLabel = styled.span`
     color: white;
 `;
 
-export default class SideMenu extends Component {
+export default class Side extends Component {
 
     constructor() {
         super();
