@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import colors from 'res/colors.json';
 import bannerImage from 'res/images/banner.svg';
 
+import { LoginButton } from 'components/Buttons';
+
 import Text from './components/Text';
-import LoginButton from './components/LoginButton';
 import Footer from './components/Footer';
 
 

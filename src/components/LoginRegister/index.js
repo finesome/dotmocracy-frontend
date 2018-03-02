@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux'
 
 import TextInput from 'components/TextInput';
-import Button from 'components/Button';
+import { DefaultButton as Button } from 'components/Buttons';
 import Link from 'components/Link';
 import Card from 'components/Card';
+
+import { hideLoginRegisterForm, showRegisterForm, showLoginForm, login_form_flags } from 'model'
 
 const Fade = styled.div`
     display: flex;
@@ -59,31 +62,35 @@ const StyledButton = styled( Button )`
     line-height: 24px;
 `;
 
-export default class LoginRegister extends Component {
+export default connect(store => ({
+    login_form_state: store.ui.login_form
+}), {
+    hideLoginRegisterForm,
+    showLoginForm,
+    showRegisterForm
+})(class LoginRegister extends Component {
 
-    constructor() {
-        super();
-
+    constructor(props) {
+        super(props);
         this.state = {
             email: "",
-            password: "",
-            visible: true,
-            isLogin: true,
+            password: ""
         }
     }
 
     visibilityHandler() {
-        this.setState( ( prevState ) => ({
-            ...this.state,
-            visible: !prevState.visible
-        }) );
+        this.props.hideLoginRegisterForm()
     }
 
     actionChangeHandler() {
-        this.setState( ( prevState ) => ({
-            ...this.state,
-            isLogin: !prevState.isLogin
-        }) );
+        switch(this.props.login_form_state) {
+            case login_form_flags.LOGIN_FORM_ON:
+                return this.props.showRegisterForm();
+            case login_form_flags.REGISTER_FORM_ON:
+                return this.props.showLoginForm();
+            default:
+                return;
+        }
     }
 
     submitForm( event ) {
@@ -110,7 +117,7 @@ export default class LoginRegister extends Component {
 
     render() {
         return (
-            this.state.visible
+            (this.props.login_form_state !== login_form_flags.AUTH_FORM_OFF)
                 ? <Fade onClick={this.visibilityHandler.bind( this )}>
                     <Modal onClick={event => {
                         event.stopPropagation()
@@ -121,7 +128,7 @@ export default class LoginRegister extends Component {
                                        onChange={this.inputChangeHandler.bind( this )}/>
                             <TextInput type="password" name="password" hint="Password" maxLength="30"
                                        onChange={this.inputChangeHandler.bind( this )}/>
-                            {this.state.isLogin
+                            {(this.props.login_form_state === login_form_flags.LOGIN_FORM_ON)
                                 ? <FormSubmitWrapper>
                                     <LinkWrapper>
                                         <LoginLink onClick={this.actionChangeHandler.bind( this )}>Need an
@@ -145,4 +152,4 @@ export default class LoginRegister extends Component {
                 : null
         );
     }
-}
+})
