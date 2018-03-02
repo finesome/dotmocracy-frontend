@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Button from "components/Button";
+import Button from 'components/Button';
 
 
 const StyledButton = styled( Button )`
@@ -12,6 +12,7 @@ const StyledButton = styled( Button )`
     font-size: 5vh;
     line-height: 5vh;
 `;
+
 
 export default class LoginButton extends Component {
 

@@ -7,6 +7,7 @@ import icon_add from 'res/icons/ic_add_board.svg';
 import icon_settings from 'res/icons/ic_settings.svg';
 import icon_logout from 'res/icons/ic_logout.svg';
 
+
 const SideDiv = styled.div`
     width: 240px;
     height: 100%;
@@ -38,6 +39,7 @@ const MenuItemLabel = styled.span`
     text-transform: capitalize;
     color: white;
 `;
+
 
 export default class Side extends Component {
 

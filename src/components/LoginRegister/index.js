@@ -6,6 +6,7 @@ import Button from 'components/Button';
 import Link from 'components/Link';
 import { Card } from 'components/Cards';
 
+
 const Fade = styled.div`
     display: flex;
     align-items: center;
@@ -58,6 +59,7 @@ const StyledButton = styled( Button )`
     font-size: 20px;
     line-height: 24px;
 `;
+
 
 export default class LoginRegister extends Component {
 

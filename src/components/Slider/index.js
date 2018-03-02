@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import colors from 'res/colors.json';
 
+
 const Range = styled.input`
     
     margin: auto;
@@ -70,6 +71,7 @@ const Range = styled.input`
         display: none;
     }
 `;
+
 
 export default class Slider extends Component {
 

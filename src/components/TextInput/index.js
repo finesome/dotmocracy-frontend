@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 
+
 const StyledDiv = styled.div`
     text-align: left;
 `;
@@ -35,6 +36,7 @@ const StyledCounter = styled.span`
     font-size: 12px;
     margin-top: 4px;
 `;
+
 
 export default class TextInput extends Component {
 

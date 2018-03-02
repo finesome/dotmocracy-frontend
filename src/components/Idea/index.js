@@ -7,6 +7,7 @@ import Header from 'components/Header';
 
 import colors from 'res/colors.json';
 
+
 const Description = styled.p`
     font-size: 16px;
     line-height: 18px;

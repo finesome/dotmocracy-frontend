@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import colors from 'res/colors.json';
 import bannerImage from 'res/images/banner.svg';
 
-import Text from './components/Text';
-import LoginButton from './components/LoginButton';
-import Footer from './components/Footer';
+import Text from 'components/Text';
+import LoginButton from 'components/LoginButton';
+import Footer from 'components/Footer';
 
 
 const Background = styled.div`

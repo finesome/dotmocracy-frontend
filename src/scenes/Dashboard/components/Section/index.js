@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
-import Decision from "../Decision";
+import Decision from '../Decision';
+
 
 const SectionWrapper = styled.div`
     padding-top: 24px;
@@ -31,17 +32,15 @@ const DecisionWrapper = styled.div`
     flex-wrap: wrap;
 `;
 
+
 export default class Section extends Component {
+
     render() {
         return (
             <SectionWrapper>
-                <SectionName>Section 1</SectionName>
+                <SectionName>{this.props.section.name}</SectionName>
                 <DecisionWrapper>
-                    <Decision/>
-                    <Decision/>
-                    <Decision/>
-                    <Decision/>
-                    <Decision/>
+                    {this.props.section.decisions.map( ( decision ) => <Decision decision={decision}/> )}
                 </DecisionWrapper>
             </SectionWrapper>
         );

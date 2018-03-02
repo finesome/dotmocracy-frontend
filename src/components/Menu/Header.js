@@ -4,6 +4,7 @@ import colors from 'res/colors.json';
 import burger from 'res/icons/burger.svg';
 import avatar from 'res/icons/avatar_placeholder.svg';
 
+
 const HeaderDiv = styled.div`
     width: 100%;
     height: 64px;
@@ -58,6 +59,7 @@ const UserInfoWrapper = styled.div`
     align-items: center;
     float: right;
 `;
+
 
 export default class Header extends Component {
     render() {

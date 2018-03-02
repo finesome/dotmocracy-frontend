@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Card } from 'components/Cards';
 
+
 const Wrapper = styled( Card )`
     padding: 16px;
     margin: 20px;
