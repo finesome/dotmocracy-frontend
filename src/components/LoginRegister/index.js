@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux'
 
 import TextInput from 'components/TextInput';
-import Button from 'components/Button';
+import { DefaultButton as Button } from 'components/Buttons';
 import Link from 'components/Link';
 import Card from 'components/Card';
+
 
 const Fade = styled.div`
     display: flex;
@@ -59,17 +61,27 @@ const StyledButton = styled( Button )`
     line-height: 24px;
 `;
 
-export default class LoginRegister extends Component {
+export default connect(store => ({
+    login_form_state: store.ui.login_form
+}))(class LoginRegister extends Component {
 
-    constructor() {
-        super();
-
+    constructor(props) {
+        super(props);
         this.state = {
             email: "",
             password: "",
-            visible: true,
-            isLogin: true,
+            visible: props.login_form_state != 0,
+            isLogin: props.login_form_state == 1,
         }
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            ...this.state,
+            visible: nextProps.login_form_state != 0,
+            isLogin: nextProps.login_form_state == 1,
+
+        })
     }
 
     visibilityHandler() {
@@ -145,4 +157,4 @@ export default class LoginRegister extends Component {
                 : null
         );
     }
-}
+})
