@@ -44,14 +44,14 @@ export const fetchUser = (user) => ({
 
 export const loginUser = (login, password) => ({
     type: LOGIN_USER,
-    payload: dispatch => axios.post(`/api/login`, {login, password})
+    payload: dispatch => axios.post(`/api/user/login`, {login, password})
         .then(response => dispatch(setUser(response.data)))
         .catch(error=>{console.log("Wrong credentials")}) // TODO: dispatch wrong credentials or smth
 })
 
 export const registerUser = (login, password) => ({
     type: REGISTER_USER,
-    payload: dispatch => axios.post(`/api/register`, {login, password})
+    payload: dispatch => axios.post(`/api/user/register`, {login, password})
         .then(response => dispatch(setUser(response.data)))
         .catch(error=>{console.log("Wrong credentials")})
 })
