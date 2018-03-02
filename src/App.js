@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import 'App.css';
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
+
 
 import LoginRegister from 'components/LoginRegister';
-import Landing from 'scenes/Landing';
-import NotFound from 'scenes/NotFound';
-import Dashboard from 'scenes/Dashboard';
-import IdeaBox from 'components/Idea';
-
+//import Header from "components/Header";
+//import SideMenu from "components/SideMenu";
+import Landing from "scenes/Landing";
+import NotFound from "scenes/NotFound";
+import Dashboard from "scenes/Dashboard";
+import {connect} from "react-redux"
 
 export default class App extends Component {
     render() {
         return (
-            <div className="App">
-                <Dashboard/>
-                <LoginRegister/>
-                {/*<Landing/>*/}
-                {/*<NotFound/>*/}
-                {/*<IdeaBox/>*/}
+            <div>
+                <LoginRegister />
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={Landing}/>
+                        <Route exact path="/dashboard" component={Dashboard}/>
+                        <Route component={NotFound}/>
+                    </Switch>
+                </Router>
             </div>
         );
     }

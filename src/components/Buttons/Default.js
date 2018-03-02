@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 
-
 const Button = styled.button`
     display: block;
     background-color: ${colors.accent};
@@ -18,7 +17,7 @@ const Button = styled.button`
     cursor: pointer;
     
     &:focus {
-        outline: none;
+        outline-width: 0;
     }
     
     &:active {
