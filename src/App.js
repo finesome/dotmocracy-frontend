@@ -19,18 +19,14 @@ export default connect (
     })
 ) (class App extends Component {
     render() {
-
+        const redirect = <Redirect to={{path: "/"}}/>
         return (
             <div>
                 {/* <Toaster /> */}
                 <LoginRegister />
                 <Router>
                     <Switch>
-                        {
-                            (this.props.isAuthenticated) 
-                                ? <Route path="/dashboard" component={Dashboard}/>
-                                : ""
-                        }
+                        <Route path="/dashboard" component={Dashboard}/>
                         <Route exact path="/" component={Landing}/>
                         <Route component={NotFound}/>
                     </Switch>
