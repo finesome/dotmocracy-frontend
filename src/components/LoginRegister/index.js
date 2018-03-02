@@ -7,7 +7,7 @@ import { DefaultButton as Button } from 'components/Buttons';
 import Link from 'components/Link';
 import Card from 'components/Card';
 
-import { hideLoginRegisterForm, showRegisterForm, showLoginForm, login_form_flags } from 'model'
+import { hideLoginRegisterForm, showRegisterForm, showLoginForm, loginUser, registerUser, login_form_flags } from 'model'
 
 const Fade = styled.div`
     display: flex;
@@ -67,7 +67,9 @@ export default connect(store => ({
 }), {
     hideLoginRegisterForm,
     showLoginForm,
-    showRegisterForm
+    showRegisterForm,
+    loginUser,
+    registerUser,
 })(class LoginRegister extends Component {
 
     constructor(props) {
@@ -97,10 +99,10 @@ export default connect(store => ({
         event.preventDefault();
         switch ( event.target.name ) {
             case "login":
-                console.log( "me logging in", this.state.email, this.state.password );
+                this.props.loginUser( this.state.email, this.state.password );
                 break;
             case "register":
-                console.log( "me registering", this.state.email, this.state.password );
+                this.props.registerUser( this.state.email, this.state.password );
                 break;
             default:
                 break;

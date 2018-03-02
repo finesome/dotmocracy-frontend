@@ -1,8 +1,9 @@
-import {setUser} from '.'
+import axios from 'axios'
+import {setUser, dropUser} from '.'
 
-const done = (action) => action+"_FULFILLED";
-const fail = (action) => action+"_REJECTED";
-const load = (aciton) => action+"_PENDING";
+const done = action => action+"_FULFILLED";
+const fail = action => action+"_REJECTED";
+const load = action => action+"_PENDING";
 
 /* Action types */
 const FETCH_USER = "dotmocracy/AuthAPI/fetch_user";
@@ -51,6 +52,6 @@ export const loginUser = (login, password) => ({
 export const registerUser = (login, password) => ({
     type: REGISTER_USER,
     payload: dispatch => axios.post(`/api/register`, {login, password})
-        .then(response => dispatch(setUser(reponse.data)))
+        .then(response => dispatch(setUser(response.data)))
         .catch(error=>{console.log("Wrong credentials")})
 })

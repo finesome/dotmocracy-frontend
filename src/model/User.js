@@ -1,3 +1,5 @@
+import { hideLoginRegisterForm } from '.'
+
 /* Action types */
 const SET_USER = "dotmocracy/User/set_user";
 const DROP_USER = "dotmocracy/User/drop_user"
@@ -18,7 +20,10 @@ export default function reducer(state = initial_state, action = {}) {
 /* Action creators */
 export const setUser = (user) => ({
     type: SET_USER,
-    payload: user,
+    payload: dispatch => {
+        dispatch(hideLoginRegisterForm);
+        dispatch({type: SET_USER});
+    }
 })
 
 export const dropUser = () => ({
