@@ -14,16 +14,26 @@ const HeaderDiv = styled.div`
     left: 0;
     
     background-color: ${colors.primaryDark};
+    
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 `;
 
 const Burger = styled.button`
     height: 32px;
     width: 32px;
-    border: none;
+    margin: 16px;
     padding: none;
+    
+    border: none;
+    
     background-color: transparent;
     background-image: url(${burger});
-    margin: 16px;
+    
+    cursor: pointer;
+    
+    &:focus {
+        outline: none;
+    }
 `;
 
 const SiteName = styled.h1`
@@ -61,7 +71,7 @@ const UserInfoWrapper = styled.div`
 `;
 
 
-export default class Header extends Component {
+export default class Sticky extends Component {
     render() {
         return (
             <HeaderDiv>

@@ -1,10 +1,11 @@
-import { applyMiddleware, createStore } from 'redux'
-import thunk from 'redux-thunk'
-import logger from 'redux-logger'
-import promise from 'redux-promise-middleware'
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import promise from 'redux-promise-middleware';
 
 import {combineReducers} from "redux";
-import UI from './UI'
+import UI from './LoginUI';
+
 
 const middleware = applyMiddleware(promise(), thunk, logger);
 const store = createStore(combineReducers({

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 
-import { Side as SideMenu, Header as HeaderMenu } from 'components/Menu';
-import Section from 'components/Section';
+import { Side as SideMenu, Sticky as HeaderMenu } from 'components/Menus';
+import Section from './components/Section';
 
 
 const SectionWrapper = styled.div`
-    padding-top: 64px;
-    padding-left: 240px;
+    margin-top: 64px;
+    margin-left: 240px;
+    
     color: ${colors.darkText};
     background-color: ${colors.background};
 `;
@@ -192,7 +193,6 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div id="Dashboard">
-                <HeaderMenu/>
                 <div>
                     <SideMenu/>
                     <SectionWrapper>
@@ -201,9 +201,12 @@ export default class Dashboard extends Component {
                             <SwitcherDivider> / </SwitcherDivider>
                             <SwitcherPassive>Teams</SwitcherPassive>
                         </ViewModeWrapper>
-                        {this.state.sections.map( ( section ) => <Section section={section}/> )}
+                        {this.state.sections.map( ( section, i ) =>
+                            <Section section={section} key={"section-item-" + i}/>
+                        )}
                     </SectionWrapper>
                 </div>
+                <HeaderMenu/>
             </div>
         );
     }

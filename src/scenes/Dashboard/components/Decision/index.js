@@ -9,6 +9,8 @@ import Link from "components/Link";
 
 
 const DecisionWrapper = styled( Wrapper )`
+    margin: 0;
+
     &:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
@@ -50,17 +52,12 @@ const Info = styled( Link )`
 
 export default class Decision extends Component {
 
-    constructor() {
-        super();
-        console.log( this.props );
-    }
-
     render() {
         return (
             <DecisionWrapper>
                 <Header>{this.props.decision.name}</Header>
                 <IdeaList>
-                    {this.props.decision.ideas.map( ( idea, i ) => <Idea key={"list-item-" + i}>
+                    {this.props.decision.ideas.map( ( idea, i ) => <Idea key={"idea-item-" + i}>
                         <span>{idea.name}</span>
                         <span>{idea.score}</span>
                     </Idea> )}

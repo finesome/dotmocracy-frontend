@@ -17,6 +17,8 @@ const SideDiv = styled.div`
     left: 0;
     
     background-color: ${colors.primary};
+    
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 `;
 
 const MenuItem = styled.div`
@@ -25,6 +27,12 @@ const MenuItem = styled.div`
     
     display: flex;
     align-items: center;
+    
+    cursor: pointer;
+    
+    &:hover {
+        background-color: ${colors.accent};
+    }
 `;
 
 const MenuItemIcon = styled.img`

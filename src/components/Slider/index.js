@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import colors from 'res/colors.json';
 
 
+const RangeWrapper = styled.div`
+    padding: 0 8px;
+`;
+
 const Range = styled.input`
     
     margin: auto;
@@ -13,9 +17,9 @@ const Range = styled.input`
     width: 100%;
     outline: none;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: 4px;
     
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
     background-image: linear-gradient(to right,
         ${colors.accent} 0,
         ${colors.accent} ${props => props.value}%,
@@ -23,40 +27,74 @@ const Range = styled.input`
     
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 12px;
         margin-top: 0px;
-        border-radius: 8px;
+        border-radius: 12px;
         background: ${colors.accent};
     }
     
-    &::-webkit-slider-thumb:active,
-    &::-webkit-slider-thumb:hover {
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    &::-webkit-slider-thumb:hover,
+    &::-webkit-slider-thumb:active {
+        width: 16px;
+        height: 16px;
+        content: "0";
+    }
+    
+    // &::-webkit-slider-thumb:hover,
+    // &::-webkit-slider-thumb:active {
+    //     width: 16px;
+    //     height: 16px;
+    //     background-image: 
+    // }
+    
+    &::-webkit-slider-thumb:focus {
+        background: radial-gradient(circle at 50%,
+            ${colors.accent} 0,
+            ${colors.accent} 6px,
+            rgba(0, 0, 0, 0.25) 6px );
     }
     
     &::-moz-range-thumb {
-        width: 16px;
-        height: 16px;
-        border-radius: 8px;
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+        background: ${colors.accent};
         box-sizing: border-box;
     }
     
-    &::-moz-range-thumb:active,
-    &::-moz-range-thumb:hover {
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    &::-moz-range-thumb:hover,
+    &::-moz-range-thumb:active {
+        width: 16px;
+        height: 16px;
+    }
+    
+    &::-moz-range-thumb:focus {
+        background: radial-gradient(circle at 50%,
+            ${colors.accent} 0,
+            ${colors.accent} 6px,
+            rgba(0, 0, 0, 0.25) 6px );
     }
     
     &::-ms-thumb {
-        width: 16px;
-        height: 16px;
-        border-radius: 8px;
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+        background: ${colors.accent};
         box-sizing: border-box;
     }
     
-    &::-ms-thumb:active,
-    &::-ms-thumb:hover {
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    &::-ms-thumb:hover,
+    &::-ms-thumb:active {
+        width: 16px;
+        height: 16px;
+    }
+    
+    &::-ms-thumb:focus {
+        background: radial-gradient(circle at 50%,
+            ${colors.accent} 0,
+            ${colors.accent} 6px,
+            rgba(0, 0, 0, 0.25) 6px );
     }
     
     &::-ms-ticks-after { 
@@ -72,6 +110,23 @@ const Range = styled.input`
     }
 `;
 
+const TextWrapper = styled.div`
+    padding-top: 4px;
+    margin: 0 -8px;
+    
+    display: flex;
+    justify-content: space-between;
+    
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: ${colors.darkText};
+`;
+
+const Text = styled.span`
+    display: inline-block;
+    width: 28px;
+`;
 
 export default class Slider extends Component {
 
@@ -79,20 +134,27 @@ export default class Slider extends Component {
         super( props );
 
         this.state = {
-            value: Math.round(props.max/2)
+            value: Math.round( props.max / 2 )
         }
     }
 
     onChangeHandler( event ) {
-        this.setState({
+        this.setState( {
             value: event.target.value
-        });
+        } );
     }
 
     render() {
         return (
-            <Range type="range" min={1} max={this.props.max} value={this.state.value}
-                   onChange={this.onChangeHandler.bind(this)}/>
+            <RangeWrapper>
+                <Range type="range" min={0} max={this.props.max} value={this.state.value}
+                       onChange={this.onChangeHandler.bind( this )}/>
+                <TextWrapper>
+                    <Text>0</Text>
+                    <Text>{this.state.value}</Text>
+                    <Text>{this.props.max}</Text>
+                </TextWrapper>
+            </RangeWrapper>
         );
     }
 }

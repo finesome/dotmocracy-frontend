@@ -27,9 +27,26 @@ const SectionName = styled.span`
     }
 `;
 
+const DecisionsWrapper = styled.div`
+    // display: flex;
+    // flex-wrap: wrap;
+    
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-column-count: ${props => props.colCount};
+    -moz-column-count: ${props => props.colCount};
+    column-count: ${props => props.colCount};
+    -webkit-column-gap: 0;
+    -moz-column-gap: 0;
+    column-gap: 0;
+    position: relative;
+`;
+
 const DecisionWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
+    padding: 20px;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
 `;
 
 
@@ -39,10 +56,38 @@ export default class Section extends Component {
         return (
             <SectionWrapper>
                 <SectionName>{this.props.section.name}</SectionName>
-                <DecisionWrapper>
-                    {this.props.section.decisions.map( ( decision ) => <Decision decision={decision}/> )}
-                </DecisionWrapper>
+                <DecisionsWrapper colCount={Math.round( (this.state.width - 240) / 320 )}>
+                    {this.props.section.decisions.map( ( decision, i ) =>
+                        // TODO: stop obscure code
+                        <DecisionWrapper key={"decision-item-" + i}>
+                            <Decision decision={decision}/>
+                        </DecisionWrapper>
+                    )}
+                </DecisionsWrapper>
             </SectionWrapper>
         );
+    }
+
+    updateDimensions() {
+        let w = window,
+            d = document,
+            documentElement = d.documentElement,
+            body = d.getElementsByTagName( 'body' )[0],
+            width = w.innerWidth || documentElement.clientWidth || body.clientWidth,
+            height = w.innerHeight || documentElement.clientHeight || body.clientHeight;
+
+        this.setState( { width, height } );
+    }
+
+    componentWillMount() {
+        this.updateDimensions();
+    }
+
+    componentDidMount() {
+        window.addEventListener( "resize", this.updateDimensions.bind( this ) );
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener( "resize", this.updateDimensions.bind( this ) );
     }
 }
