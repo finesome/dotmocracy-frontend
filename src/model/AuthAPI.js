@@ -35,23 +35,23 @@ export default function reducer(state = initial_state, action = {}) {
 
 
 /* Action creators */
-export const fetchUser = (user) => ({
-    type: FETCH_USER,
-    payload: (dispatch) => axios.get(`/api/user`)
-            .then(response=> dispatch(setUser(response.data)))
-            .catch(error=> dispatch(dropUser())) // TODO: dispatch showErrorMessage(response.statusText) or smth
-})
+export const fetchUser = user => dispatch => dispatch({
+        type: FETCH_USER,
+        payload: axios.get(`/api/user`)
+    })
+    .then(response=> dispatch(setUser(response.data)))
+    .catch(error=> dispatch(dropUser())) // TODO: dispatch showErrorMessage(response.statusText) or smth
 
-export const loginUser = (login, password) => ({
-    type: LOGIN_USER,
-    payload: dispatch => axios.post(`/api/user/login`, {login, password})
-        .then(response => dispatch(setUser(response.data)))
-        .catch(error=>{console.log("Wrong credentials")}) // TODO: dispatch wrong credentials or smth
-})
+export const loginUser = (login, password) => dispatch => dispatch({
+        type: LOGIN_USER,
+        payload: axios.post(`/api/user/login`, {login, password})
+    })
+    .then(response => dispatch(setUser(response.data)))
+    .catch(error=>{console.log("Wrong credentials")}) // TODO: dispatch wrong credentials or smth
 
-export const registerUser = (login, password) => ({
-    type: REGISTER_USER,
-    payload: dispatch => axios.post(`/api/user/register`, {login, password})
-        .then(response => dispatch(setUser(response.data)))
-        .catch(error=>{console.log("Wrong credentials")})
-})
+export const registerUser = (login, password) => dispatch => dispatch({
+        type: REGISTER_USER,
+        payload: axios.post(`/api/user/register`, {login, password})
+    })
+    .then(response => dispatch(setUser(response.data)))
+    .catch(error=>{console.log("Wrong credentials")})
