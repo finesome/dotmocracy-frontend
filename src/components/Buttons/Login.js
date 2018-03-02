@@ -28,3 +28,5 @@ export default connect( null , dispatch => ({
         );
     }
 })
+
+//export connect(mapStoreToProps, mapActionToProps)(LoginForm)
