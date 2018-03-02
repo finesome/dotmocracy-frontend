@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'App.css';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
-import Toaster from 'components/Toaster'
+// import Toaster from 'components/Toaster'
 
 
 import LoginRegister from 'components/LoginRegister';
