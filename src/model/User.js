@@ -18,13 +18,12 @@ export default function reducer(state = initial_state, action = {}) {
 
 
 /* Action creators */
-export const setUser = (user) => ({
-    type: SET_USER,
-    payload: dispatch => {
-        dispatch(hideLoginRegisterForm);
-        dispatch({type: SET_USER});
-    }
-})
+export const setUser = (user) => { return (dispatch) => {
+    dispatch({
+        type: SET_USER
+    });
+    dispatch(hideLoginRegisterForm());
+}}
 
 export const dropUser = () => ({
     type: DROP_USER

@@ -20,18 +20,35 @@ export default connect (
 ) (class App extends Component {
     render() {
         const redirect = <Redirect to={{path: "/"}}/>
-        return (
-            <div>
-                {/* <Toaster /> */}
-                <LoginRegister />
-                <Router>
-                    <Switch>
-                        <Route path="/dashboard" component={Dashboard}/>
-                        <Route exact path="/" component={Landing}/>
-                        <Route component={NotFound}/>
-                    </Switch>
-                </Router>
-            </div>
-        );
+
+        if (this.props.isAuthenticated) {
+            return (
+                <div>
+                    {/* <Toaster /> */}
+                    <LoginRegister />
+                    <Router>
+                        <Switch>
+                            <Route exact path="/" component={Dashboard}/>
+                            {/* <Route exact path="/" component={Landing}/> */}
+                            <Route component={NotFound}/>                            
+                        </Switch>
+                    </Router>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    {/* <Toaster /> */}
+                    <LoginRegister />
+                    <Router>
+                        <Switch>
+                            <Route path="/dashboard" component={Dashboard}/>
+                            <Route exact path="/" component={Landing}/>
+                            <Route component={NotFound}/>
+                        </Switch>
+                    </Router>
+                </div>
+            );
+        }
     }
 })
