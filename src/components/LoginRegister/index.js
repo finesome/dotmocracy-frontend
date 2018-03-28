@@ -5,7 +5,8 @@ import {connect} from 'react-redux'
 import TextInput from 'components/TextInput';
 import { DefaultButton as Button } from 'components/Buttons';
 import Link from 'components/Link';
-import Card from 'components/Card';
+import { Card } from 'components/Cards';
+
 
 import { hideLoginRegisterForm, showRegisterForm, showLoginForm, loginUser, registerUser, login_form_flags } from 'model'
 

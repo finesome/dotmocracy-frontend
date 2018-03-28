@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import 'App.css';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
-// import Toaster from 'components/Toaster'
-
 
 import LoginRegister from 'components/LoginRegister';
-//import Header from "components/Header";
-//import SideMenu from "components/SideMenu";
-import Landing from "scenes/Landing";
-import NotFound from "scenes/NotFound";
-import Dashboard from "scenes/Dashboard";
-import {connect} from "react-redux"
+import Idea from 'components/Idea';
+import Landing from 'scenes/Landing';
+import NotFound from 'scenes/NotFound';
+import Dashboard from 'scenes/Dashboard';
+import { connect } from 'react-redux';
+
 
 
 export default connect (
@@ -30,7 +28,7 @@ export default connect (
                         <Switch>
                             <Route exact path="/" component={Dashboard}/>
                             {/* <Route exact path="/" component={Landing}/> */}
-                            <Route component={NotFound}/>                            
+                            <Route component={NotFound}/>
                         </Switch>
                     </Router>
                 </div>

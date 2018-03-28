@@ -7,6 +7,7 @@ import icon_add from 'res/icons/ic_add_board.svg';
 import icon_settings from 'res/icons/ic_settings.svg';
 import icon_logout from 'res/icons/ic_logout.svg';
 
+
 const SideDiv = styled.div`
     width: 240px;
     height: 100%;
@@ -16,6 +17,8 @@ const SideDiv = styled.div`
     left: 0;
     
     background-color: ${colors.primary};
+    
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 `;
 
 const MenuItem = styled.div`
@@ -24,6 +27,12 @@ const MenuItem = styled.div`
     
     display: flex;
     align-items: center;
+    
+    cursor: pointer;
+    
+    &:hover {
+        background-color: ${colors.accent};
+    }
 `;
 
 const MenuItemIcon = styled.img`
@@ -39,7 +48,8 @@ const MenuItemLabel = styled.span`
     color: white;
 `;
 
-export default class SideMenu extends Component {
+
+export default class Side extends Component {
 
     constructor() {
         super();

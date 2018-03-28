@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import notFound from 'res/images/404.svg';
 import colors from 'res/colors.json';
 
+
 const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -38,6 +39,7 @@ const StyledErrorText = styled.h3`
     font-size: 6vh;
     line-height: 6vh;
 `;
+
 
 export default class NotFound extends Component {
     render() {

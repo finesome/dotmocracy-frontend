@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Card from 'components/Card';
+
+import { Wrapper } from 'components/Cards';
+import Header from 'components/Header';
+
 import colors from 'res/colors.json';
+import Link from "components/Link";
 
-const Wrapper = styled( Card )`
-    padding: 16px;
-    margin: 20px;
-    flex: 0 0.8 240px;
-`;
 
-const Header = styled.h1`
-    font-size: 24px;
-    line-height: 28px;
-    margin-bottom: 12px;
+const DecisionWrapper = styled( Wrapper )`
+    margin: 0;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
 `;
 
 const IdeaList = styled.div`
@@ -31,38 +32,42 @@ const Idea = styled.div`
     
     width: 100%;
     height: 40px;
+    
+    padding: 0 16px;
+    margin: 0 -16px;
+    
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
 `;
+
+const Info = styled( Link )`
+    display: block;
+    margin-top: 8px;
+    
+    font-size: 16px;
+    line-height: 20px;
+`;
+
 
 export default class Decision extends Component {
 
-    constructor() {
-        super();
-        this.items = [
-            { idea: "Idea 1", score: "10" },
-            { idea: "Idea 2", score: "142" },
-            { idea: "Idea 3", score: "348" },
-            { idea: "Idea 4", score: "56" }
-        ];
-    }
-
     render() {
-        let ideas = [];
-        for ( let i = 0; i < this.items.length; i++ ) {
-            ideas.push(
-                <Idea key={"list-item-" + i}>
-                    <span>{this.items[i].idea}</span>
-                    <span>{this.items[i].score}</span>
-                </Idea>
-            );
-        }
-
-        return(
-            <Wrapper>
-                <Header>Kinda very long question for testing purposes</Header>
+        return (
+            <DecisionWrapper>
+                <Header>{this.props.decision.name}</Header>
                 <IdeaList>
-                    {ideas}
+                    {this.props.decision.ideas.map( ( idea, i ) => <Idea key={"idea-item-" + i}>
+                        <span>{idea.name}</span>
+                        <span>{idea.score}</span>
+                    </Idea> )}
                 </IdeaList>
-            </Wrapper>
+                <Info>{
+                    this.props.decision.isTeam
+                        ? (this.props.decision.subName) ? "Team " + this.props.decision.subName : "No team"
+                        : (this.props.decision.subName) ? "Category " + this.props.decision.subName : "Unsorted"
+                }</Info>
+            </DecisionWrapper>
         );
     }
 }
