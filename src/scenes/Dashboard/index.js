@@ -50,7 +50,7 @@ export default class Dashboard extends Component {
         this.state = {
             sections: [
                 {
-                    name: "Unsorted",
+                    name: "No category",
                     decisions: [
                         {
                             name: "Important decision 11",
@@ -85,7 +85,7 @@ export default class Dashboard extends Component {
                     ]
                 },
                 {
-                    name: "Sorted",
+                    name: "Category 1",
                     decisions: [
                         {
                             name: "Important decision 21",
@@ -152,7 +152,7 @@ export default class Dashboard extends Component {
                     ]
                 },
                 {
-                    name: "Very sorted",
+                    name: "Category 2",
                     decisions: [
                         {
                             name: "Important decision 31",
