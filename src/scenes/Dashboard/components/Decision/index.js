@@ -9,8 +9,6 @@ import Link from "components/Link";
 
 
 const DecisionWrapper = styled( Wrapper )`
-    margin: 0;
-
     &:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }

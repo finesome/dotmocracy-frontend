@@ -3,10 +3,11 @@ import 'App.css';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
 
 import LoginRegister from 'components/LoginRegister';
-import Idea from 'components/Idea';
+import Idea from 'scenes/Decision/components/Idea';
 import Landing from 'scenes/Landing';
 import NotFound from 'scenes/NotFound';
 import Dashboard from 'scenes/Dashboard';
+import Decision from 'scenes/Decision';
 import { connect } from 'react-redux';
 
 
