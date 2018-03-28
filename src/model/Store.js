@@ -5,10 +5,16 @@ import promise from 'redux-promise-middleware'
 
 import {combineReducers} from "redux";
 import UI from './UI'
+import User from './User'
+import AuthAPI from './AuthAPI'
+import Toast from './Toast'
 
 const middleware = applyMiddleware(promise(), thunk, logger);
 const store = createStore(combineReducers({
-    ui: UI
+    ui: UI,
+    user: User,
+    auth: AuthAPI,
+    toast: Toast
 }), middleware);
 
 

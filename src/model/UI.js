@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 /* Action types */
 const SHOW_LOGIN_FORM = "dotmocracy/UI/show_login_form";
 const SHOW_REGISTER_FORM = "dotmocracy/UI/show_register_form";
