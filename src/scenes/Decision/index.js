@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { PieChart } from 'react-d3-components';
+import d3 from 'd3';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 
 import { Side as SideMenu, Sticky as HeaderMenu } from 'components/Menus';
 import Idea from './components/Idea';
+
 
 const DecisionWrapper = styled.div`
     margin-top: 64px;
@@ -51,8 +54,8 @@ const IdeaWrapper = styled.div`
     break-inside: avoid;
 `;
 
-export default class Decision extends Component {
 
+export default class Decision extends Component {
     constructor() {
         super();
         this.state = {
@@ -65,7 +68,15 @@ export default class Decision extends Component {
                     { name: "Idea 114", desc: "Idea 114 Idea 114 Idea 114 Idea 114 Idea 114", score: 61 }
                 ]
             }
-        }
+        };
+        this.data = {
+            label: '',
+            values: this.state.decision.ideas.map( ( idea ) => ({ x: idea.name, y: idea.score }) )
+        };
+
+        // this.colorScale = d3.scaleOrdinal()
+        //         .domain(this.state.decision.ideas.map( (idea) => idea.name ))
+        //         .range(this.state.decision.ideas.map( ( _, i ) => colors.ideaColors[i] ));
     }
 
     render() {
@@ -84,6 +95,9 @@ export default class Decision extends Component {
                                 </IdeaWrapper>
                             )}
                         </IdeasWrapper>
+                        <PieChart width={600} height={400} data={this.data}
+                                  sort={null} hideLabels={true}/>
+                                  {/* colorScale={this.colorScale}/>*/}
                     </DecisionWrapper>
                 </div>
                 <HeaderMenu/>
