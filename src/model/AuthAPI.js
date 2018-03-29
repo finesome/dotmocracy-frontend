@@ -6,10 +6,10 @@ const fail = action => action+"_REJECTED";
 const load = action => action+"_PENDING";
 
 /* Action types */
-const FETCH_USER = "dotmocracy/AuthAPI/FETCH_USER";
-const LOGIN_USER = "dotmocracy/AuthAPI/LOGIN_USER";
-const REGISTER_USER = "dotmocracy/AuthAPI/REGISTER_USER";
-const LOGOUT_USER = "dotmocracy/AuthAPI/LOGOUT_USER"
+export const FETCH_USER = "dotmocracy/AuthAPI/FETCH_USER";
+export const LOGIN_USER = "dotmocracy/AuthAPI/LOGIN_USER";
+export const REGISTER_USER = "dotmocracy/AuthAPI/REGISTER_USER";
+export const LOGOUT_USER = "dotmocracy/AuthAPI/LOGOUT_USER"
 
 /* Reducer */
 const initial_state = {
@@ -43,12 +43,15 @@ export default function reducer(state = initial_state, action = {}) {
 
 /* Action creators */
 export const fetchUser = user => dispatch => {
-    dispatch({
-        type: FETCH_USER,
-        payload: axios.get(`/api/user`)
-    })
-    .then(response => { dispatch(setUser(response.data)) }, error => dispatch(dropUser())) 
-    // TODO: dispatch showErrorMessage(response.statusText) or smth
+    return dispatch => {
+        dispatch({
+            type: FETCH_USER,
+            payload: axios.get(`/api/user`)
+        }).then(
+            response => { dispatch(setUser(response.data)) }, 
+            error => dispatch(dropUser()) // TODO: dispatch showErrorMessage(response.statusText) or smth
+        )
+    }
 }
 
 export function loginUser(login, password){
@@ -56,27 +59,32 @@ export function loginUser(login, password){
         dispatch({
             type: LOGIN_USER,
             payload: axios.post(`/api/user/login`, {login, password})
-        }).then((response) => { dispatch(setUser(response.data)) },
-                (error) => { console.log("Wrong credentials") }) // TODO: dispatch wrong credentials or smth
+        }).then(
+            response => { dispatch(setUser(response.data)) },
+            error => { console.log("Wrong credentials") } // TODO: dispatch wrong credentials or smth
+        ) 
     }
 }
 
 export const registerUser = (login, password) => dispatch => {
-    dispatch({
-        type: REGISTER_USER,
-        payload: axios.post(`/api/user/register`, {login, password})
-    })
-    .then(
-        error => { console.log("Wrong credentials") }
-    )
+    return dispatch => {
+        dispatch({
+            type: REGISTER_USER,
+            payload: axios.post(`/api/user/register`, {login, password})
+        }).then(
+            error => { console.log("Wrong credentials") }
+        )
+    }
 }
     
 export const logoutUser = (login, password) => dispatch => {
-    dispatch({
-        type: LOGOUT_USER,
-        payload: axios.post(`/api/user/logout`, {})
-    })
-    .then(
-        response => dispatch(dropUser()), error => { console.log("Wrong credentials") }
-    )
+    return dispatch => {
+        dispatch({
+            type: LOGOUT_USER,
+            payload: axios.post(`/api/user/logout`, {})
+        }).then(
+            response => dispatch(dropUser()), 
+            error => { console.log("Wrong credentials") }
+        )
+    }
 }

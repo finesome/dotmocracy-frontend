@@ -2,7 +2,7 @@ import { hideLoginRegisterForm } from '.'
 
 /* Action types */
 const SET_USER = "dotmocracy/User/SET_USER";
-const DROP_USER = "dotmocracy/User/DROP_USER";
+export const DROP_USER = "dotmocracy/User/DROP_USER";
 
 /* Reducer */
 const initial_state = {
@@ -23,15 +23,15 @@ export default function reducer( state = initial_state, action = {} ) {
 
 /* Action creators */
 export const setUser = ( user ) => {
-    return ( dispatch ) => {
-        dispatch( {
+    return dispatch => {
+        dispatch({
             type: SET_USER,
             payload: {user}
-        } );
+        });
         dispatch( hideLoginRegisterForm() );
     }
-};
+}
 
 export const dropUser = () => ({
     type: DROP_USER
-});
+})
