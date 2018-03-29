@@ -1,3 +1,13 @@
+### BOARD API
+
+```
+Path: /api/boards 
+Method: GET
+Returns:
+    if user authenticated: 200 OK, [Object boards]
+    otherwise: 401 Unauthorized
+```
+
 ### AUTH API
 
 ```
@@ -31,3 +41,5 @@ Returns:
     if registration is correct: 201 Created, [Object user]
     otherwise: 401 Unauthorized
 ```
+
+
