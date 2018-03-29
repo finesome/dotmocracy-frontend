@@ -8,7 +8,7 @@ Returns:
     otherwise: 401 Unauthorized
 ```
 ```
-Path: /api/ 
+Path: /api/boards/:board_id/ideas
 Method: GET
 Returns:
     if user authenticated: 200 OK, [Object ideas]
