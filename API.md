@@ -1,7 +1,7 @@
 ### Votes API
 
 ```
-Path: /votes/add
+Path: /api/votes/add
 Method: POST
 Params: {option_id, value}
 Returns:
@@ -9,7 +9,7 @@ Returns:
     otherwise: 401 Unauthorized
 ```
 ```
-Path: /votes/edit
+Path: /api/votes/edit
 Method: POST
 Params: {vote_id, value}
 Returns:
