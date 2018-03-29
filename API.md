@@ -8,6 +8,14 @@ Returns:
     otherwise: 401 Unauthorized
 ```
 ```
+Path: /api/boards/add 
+Method: POST
+Params: {topic, category}
+Returns:
+    if user authenticated: 200 OK, [Object boards]
+    otherwise: 401 Unauthorized
+```
+```
 Path: /api/boards/:board_id/ideas
 Method: GET
 Returns:
