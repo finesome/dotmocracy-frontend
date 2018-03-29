@@ -25,7 +25,8 @@ export default function reducer( state = initial_state, action = {} ) {
 export const setUser = ( user ) => {
     return ( dispatch ) => {
         dispatch( {
-            type: SET_USER
+            type: SET_USER,
+            payload: {user}
         } );
         dispatch( hideLoginRegisterForm() );
     }
