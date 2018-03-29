@@ -1,8 +1,8 @@
 import { hideLoginRegisterForm } from '.'
 
 /* Action types */
-const SET_USER = "dotmocracy/User/set_user";
-const DROP_USER = "dotmocracy/User/drop_user";
+const SET_USER = "dotmocracy/User/SET_USER";
+const DROP_USER = "dotmocracy/User/DROP_USER";
 
 /* Reducer */
 const initial_state = {
