@@ -11,7 +11,6 @@ const SectionWrapper = styled.div`
     margin-left: 240px;
     
     color: ${colors.darkText};
-    background-color: ${colors.background};
 `;
 
 const ViewModeWrapper = styled.div`

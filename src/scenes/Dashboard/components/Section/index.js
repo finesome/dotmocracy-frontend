@@ -28,9 +28,6 @@ const SectionName = styled.span`
 `;
 
 const DecisionsWrapper = styled.div`
-    // display: flex;
-    // flex-wrap: wrap;
-    
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-column-count: ${props => props.colCount};
@@ -58,9 +55,8 @@ export default class Section extends Component {
                 <SectionName>{this.props.section.name}</SectionName>
                 <DecisionsWrapper colCount={Math.round( (this.state.width - 240) / 320 )}>
                     {this.props.section.decisions.map( ( decision, i ) =>
-                        // TODO: stop obscure code
-                        <DecisionWrapper key={"decision-item-" + i}>
-                            <Decision decision={decision}/>
+                        <DecisionWrapper key={"decision-item-wrapper" + i}>
+                            <Decision decision={decision} key={"decision-item-" + i}/>
                         </DecisionWrapper>
                     )}
                 </DecisionsWrapper>

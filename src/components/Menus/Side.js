@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 import icon_home from 'res/icons/ic_dashboard.svg';
@@ -54,27 +55,26 @@ export default class Side extends Component {
     constructor() {
         super();
         this.menuItemsOrder = [
-            { icon: icon_home, text: "boards" },
-            { icon: icon_group, text: "teams" },
-            { icon: icon_add, text: "create new board" },
-            { icon: icon_settings, text: "settings" },
-            { icon: icon_logout, text: "log out" }
+            { icon: icon_home, text: "boards", link: '/dashboard' },
+            { icon: icon_group, text: "teams", link: '/' },
+            { icon: icon_add, text: "create new board", link: '/' },
+            { icon: icon_settings, text: "settings", link: '/' },
+            { icon: icon_logout, text: "log out", link: '/' }
         ];
     }
 
     render() {
-        let menuItems = [];
-        for ( let i = 0; i < this.menuItemsOrder.length; i++ ) {
-            menuItems.push(
-                <MenuItem key={"menu-item-" + i}>
-                    <MenuItemIcon src={this.menuItemsOrder[i].icon}/>
-                    <MenuItemLabel>{this.menuItemsOrder[i].text}</MenuItemLabel>
-                </MenuItem>
-            );
-        }
         return (
             <SideDiv>
-                {menuItems}
+                {this.menuItemsOrder.map( ( item, i ) => (
+                    <Link to={{ pathname: item.link }} key={"menu-item-" + i}
+                          style={{ textDecoration: 'none' }}>
+                        <MenuItem>
+                            <MenuItemIcon src={item.icon}/>
+                            <MenuItemLabel>{item.text}</MenuItemLabel>
+                        </MenuItem>
+                    </Link>
+                ) )}
             </SideDiv>
         );
     }

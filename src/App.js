@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'App.css';
-import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 
 import LoginRegister from 'components/LoginRegister';
 import Landing from 'scenes/Landing';
@@ -27,7 +27,7 @@ export default connect (
                     <Router>
                         <Switch>
                             {/*<Route exact path="/" component={Dashboard}/>*/}
-                             <Route exact path="/" component={Landing}/>
+                            <Route exact path="/" component={Landing}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Router>
