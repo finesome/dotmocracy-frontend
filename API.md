@@ -11,7 +11,7 @@ Returns:
 ```
 Path: /api/user/login  
 Method: POST  
-Params: {login, password}  
+Params: {username, password}  
 Returns:  
     if credentials are correct: 200 OK, [Object user]  
     otherwise: 401 Unauthorized  
@@ -26,7 +26,7 @@ Returns:
 ```
 Path: /api/user/register
 Method: POST
-Params: {login, password}
+Params: {username, password}
 Returns:
     if registration is correct: 201 Created, [Object user]
     otherwise: 401 Unauthorized
