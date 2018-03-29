@@ -1,24 +1,24 @@
 {
-    "accent": "#009688",
-    "accentDark": "#00675b",
-    "primary": "#354B60",
-    "primaryDark": "#2C3E50",
-    "primaryGray": "#818181",
-    "linkBlue": "#2196F3",
-    "background": "#F1F2F7",
-    "darkText": "#333333",
-    "mediumText": "#515151",
-    "dividerGray": "#D8D8D8",
-    "ideaColors": [
-        "#BCAAA4",
-        "#FFAB91",
-        "#FFE082",
-        "#FFF59D",
-        "#A5D6A7",
-        "#80DEEA",
-        "#90CAF9",
-        "#9FA8DA",
-        "#CE93D8",
-        "#F48FB1"
-    ]
+  "accent": "#009688",
+  "accentDark": "#00675b",
+  "primary": "#354B60",
+  "primaryDark": "#2C3E50",
+  "primaryGray": "#818181",
+  "linkBlue": "#2196F3",
+  "background": "#F1F2F7",
+  "darkText": "#333333",
+  "mediumText": "#515151",
+  "dividerGray": "#D8D8D8",
+  "ideaColors": [
+    "#EF5350",
+    "#42A5F5",
+    "#AB47BC",
+    "#9CCC65",
+    "#D4E157",
+    "#8D6E63",
+    "#78909C",
+    "#FFCA28",
+    "#26C6DA",
+    "#BDBDBD"
+  ]
 }

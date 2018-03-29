@@ -6,6 +6,7 @@ import colors from 'res/colors.json';
 
 const RangeWrapper = styled.div`
     padding: 0 8px;
+    flex-grow: 1;
 `;
 
 const Range = styled.input`
@@ -40,13 +41,6 @@ const Range = styled.input`
         height: 16px;
         content: "0";
     }
-    
-    // &::-webkit-slider-thumb:hover,
-    // &::-webkit-slider-thumb:active {
-    //     width: 16px;
-    //     height: 16px;
-    //     background-image: 
-    // }
     
     &::-webkit-slider-thumb:focus {
         background: radial-gradient(circle at 50%,
@@ -131,10 +125,10 @@ const Text = styled.span`
 export default class Slider extends Component {
 
     constructor( props ) {
-        super( props );
+        super();
 
         this.state = {
-            value: Math.round( props.max / 2 )
+            value: props.value || 0
         }
     }
 
@@ -142,17 +136,18 @@ export default class Slider extends Component {
         this.setState( {
             value: event.target.value
         } );
+        this.props.onChange(+event.target.value);
     }
 
     render() {
         return (
             <RangeWrapper>
-                <Range type="range" min={0} max={this.props.max} value={this.state.value}
+                <Range type="range" min={0} max={this.props.max || 100} value={this.state.value}
                        onChange={this.onChangeHandler.bind( this )}/>
                 <TextWrapper>
                     <Text>0</Text>
                     <Text>{this.state.value}</Text>
-                    <Text>{this.props.max}</Text>
+                    <Text>{this.props.max || 100}</Text>
                 </TextWrapper>
             </RangeWrapper>
         );
