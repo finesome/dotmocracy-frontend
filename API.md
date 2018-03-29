@@ -1,3 +1,23 @@
+### Votes API
+
+```
+Path: /votes/add
+Method: POST
+Params: {option_id, value}
+Returns:
+    if user authenticated: 200 OK, [Object vote]
+    otherwise: 401 Unauthorized
+```
+```
+Path: /votes/edit
+Method: POST
+Params: {vote_id, value}
+Returns:
+    if user authenticated: 200 OK, [Object vote]
+    otherwise: 401 Unauthorized
+```
+
+
 ### BOARD API
 
 ```
