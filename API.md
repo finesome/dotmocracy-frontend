@@ -7,6 +7,13 @@ Returns:
     if user authenticated: 200 OK, [Object boards]
     otherwise: 401 Unauthorized
 ```
+```
+Path: /api/ 
+Method: GET
+Returns:
+    if user authenticated: 200 OK, [Object ideas]
+    otherwise: 401 Unauthorized
+```
 
 ### AUTH API
 
