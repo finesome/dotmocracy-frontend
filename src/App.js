@@ -19,14 +19,12 @@ export default connect (
     render() {
         const redirect = <Redirect to={{path: "/"}}/>;
 
-        if (this.props.isAuthenticated) {
+        if (!this.props.isAuthenticated) {
             return (
                 <div>
-                    {/* <Toaster /> */}
                     <LoginRegister />
                     <Router>
                         <Switch>
-                            {/*<Route exact path="/" component={Dashboard}/>*/}
                             <Route exact path="/" component={Landing}/>
                             <Route component={NotFound}/>
                         </Switch>
@@ -36,13 +34,12 @@ export default connect (
         } else {
             return (
                 <div>
-                    {/* <Toaster /> */}
                     <LoginRegister />
                     <Router>
                         <Switch>
-                            <Route path="/dashboard" component={Dashboard}/>
-                            <Route exact path="/decision" component={Decision}/>
                             <Route exact path="/" component={Landing}/>
+                            <Route path="/decision" component={Decision}/>
+                            <Route path="/dashboard" component={Dashboard}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Router>

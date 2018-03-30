@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -rf ../dotmocracy-backend/web/* && mv build/* ../dotmocracy-backend/web/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npm run build && mv build/index.html build/200.html && surge build dotmocracy.surge.sh"
