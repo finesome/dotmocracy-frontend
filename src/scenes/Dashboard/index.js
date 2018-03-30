@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 
 import { Side as SideMenu, Sticky as HeaderMenu } from 'components/Menus';
 import Section from './components/Section';
+
+import { fetchBoards } from 'model';
 
 
 const SectionWrapper = styled.div`
@@ -42,11 +45,21 @@ const SwitcherDivider = styled( Switcher )`
     color: ${colors.dividerGray};
 `;
 
+export default connect(
+    store => ({
+        boards: store.boards.boards,
+        fetch_boards: store.dashboard.fetch_boards.load
+    }),
+    {
+        fetchBoards
+    }
+) (class Dashboard extends Component {
 
-export default class Dashboard extends Component {
+    constructor(props) {
+        super(props);
 
-    constructor() {
-        super();
+        this.props.fetchBoards();
+        
         this.state = {
             sections: [
                 {
@@ -191,6 +204,8 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        let sections = null;
+
         return (
             <div id="Dashboard">
                 <div>
@@ -210,4 +225,4 @@ export default class Dashboard extends Component {
             </div>
         );
     }
-}
+})

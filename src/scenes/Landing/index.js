@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import colors from 'res/colors.json';
 import bannerImage from 'res/images/banner.svg';
@@ -56,11 +58,20 @@ const Header = styled.div`
 `;
 
 
-export default class Landing extends Component {
-
+export default connect(
+    store => ({
+        isAuthenticated: store.user.user !== null,
+    })
+) (class Landing extends Component {    
     render() {
+        let redirect = null;
+        if (this.props.isAuthenticated) {
+            redirect = <Redirect to="/dashboard"/>;
+        }
+
         return (
             <div>
+                {redirect}
                 <Background>
                     <Header/>
                     <BodyWrapper>
@@ -77,4 +88,4 @@ export default class Landing extends Component {
             </div>
         );
     }
-}
+})
