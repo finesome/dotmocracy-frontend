@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -58,6 +60,7 @@ const Header = styled.div`
 `;
 
 
+<<<<<<< HEAD
 export default connect(
     store => ({
         isAuthenticated: store.user.user !== null,
@@ -69,6 +72,19 @@ export default connect(
             redirect = <Redirect to="/dashboard"/>;
         }
 
+=======
+export default connect (
+    store => ({
+        isAuthenticated: store.user.user !== null,
+    })
+) (class Landing extends Component {
+
+    render() {
+        let redirect = null;
+        if (this.props.isAuthenticated) {
+            redirect = <Redirect to={'/dashboard'}/>;
+        }
+>>>>>>> dev-makar
         return (
             <div>
                 {redirect}
@@ -88,4 +104,8 @@ export default connect(
             </div>
         );
     }
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> dev-makar

@@ -22,7 +22,6 @@ export default connect (
         if (!this.props.isAuthenticated) {
             return (
                 <div>
-                    {/* <Toaster /> */}
                     <LoginRegister />
                     <Router>
                         <Switch>
@@ -35,13 +34,17 @@ export default connect (
         } else {
             return (
                 <div>
-                    {/* <Toaster /> */}
                     <LoginRegister />
                     <Router>
                         <Switch>
+<<<<<<< HEAD
                             <Route path="/dashboard" component={Dashboard}/>
                             <Route path="/decision" component={Decision}/>
+=======
+>>>>>>> dev-makar
                             <Route exact path="/" component={Landing}/>
+                            <Route path="/decision" component={Decision}/>
+                            <Route path="/dashboard" component={Dashboard}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Router>
