@@ -7,6 +7,7 @@ import Landing from 'scenes/Landing';
 import NotFound from 'scenes/NotFound';
 import Dashboard from 'scenes/Dashboard';
 import Decision from 'scenes/Decision';
+import AddBoard from 'scenes/Add Board';
 import { connect } from 'react-redux';
 
 
@@ -43,6 +44,7 @@ export default connect (
                             <Route path="/dashboard" component={Dashboard}/>
                             <Route exact path="/decision" component={Decision}/>
                             <Route exact path="/" component={Landing}/>
+                            <Route exact path="/addboard" component={AddBoard}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Router>
