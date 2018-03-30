@@ -47,7 +47,7 @@ const SwitcherDivider = styled( Switcher )`
 export default connect(
     store => ({
         boards: store.boards.boards,
-        fetch_boards: store.dashboard.fetch_boards.load
+        fetch_boards: store.dashboard.fetch_boards
     }),
     {
         fetchBoards
@@ -205,17 +205,21 @@ export default connect(
 
     render() {
         let sections = null;
+        if (this.props.fetch_boards.load) {
+            sections = <div><h2>Loading</h2></div>;
+        }
 
         return (
             <div id="Dashboard">
                 <div>
                     <SideMenu/>
-                    <SectionWrapper>
+                    <SectionWrapper>                        
                         <ViewModeWrapper>
                             <SwitcherActive>Categories</SwitcherActive>
                             <SwitcherDivider> / </SwitcherDivider>
                             <SwitcherPassive>Teams</SwitcherPassive>
                         </ViewModeWrapper>
+                        {sections}
                         {this.state.sections.map( ( section, i ) =>
                             <Section section={section} key={"section-item-" + i}/>
                         )}

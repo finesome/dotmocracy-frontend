@@ -13,7 +13,8 @@ const FETCH_IDEAS = "dotmocracy/Dashboard/FETCH_IDEAS";
 /* Reducer */
 const initial_state = {
     fetch_boards: {load: null, fail: null, done: null},
-    fetch_ideas: {load: null, fail: null, done: null}
+    fetch_ideas: {load: null, fail: null, done: null},
+    boards: null
 };
 export default function reducer(state = initial_state, action = {}) {
     switch (action.type) {
@@ -36,8 +37,8 @@ export function fetchBoards() {
         payload: axios.get(`/api/boards`)
     }).then(
         response => {
-            console.log("Response:", response.data);
-            let grouped = lodash.groupBy(response.data, "category");
+            console.log("Response:", response.value.data);
+            let grouped = lodash.groupBy(response.value.data, "category");
             console.log("Grouped:", grouped);
             dispatch(setBoards(grouped));
         }, 
