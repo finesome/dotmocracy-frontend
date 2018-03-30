@@ -57,7 +57,7 @@ export default class Side extends Component {
         this.menuItemsOrder = [
             { icon: icon_home, text: "boards", link: '/dashboard' },
             { icon: icon_group, text: "teams", link: '/' },
-            { icon: icon_add, text: "create new board", link: '/' },
+            { icon: icon_add, text: "create new board", link: '/addboard' },
             { icon: icon_settings, text: "settings", link: '/' },
             { icon: icon_logout, text: "log out", link: '/' }
         ];

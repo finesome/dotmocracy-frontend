@@ -1,4 +1,5 @@
 export * from './AuthAPI';
+export * from './BoardAPI';
 export * from './Boards';
 export * from './DashboardAPI';
 export * from './Ideas';
