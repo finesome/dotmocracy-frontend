@@ -54,11 +54,11 @@ export const fetchUser = user => dispatch => {
     }
 }
 
-export function loginUser(login, password){
+export function loginUser(username, password){
     return dispatch => {
         dispatch({
             type: LOGIN_USER,
-            payload: axios.post(`/api/user/login`, {login, password})
+            payload: axios.post(`/api/user/login`, {username, password})
         }).then(
             response => { dispatch(setUser(response.data)) },
             error => { console.log("Wrong credentials") } // TODO: dispatch wrong credentials or smth
@@ -66,18 +66,18 @@ export function loginUser(login, password){
     }
 }
 
-export const registerUser = (login, password) => dispatch => {
+export const registerUser = (username, password) => dispatch => {
     return dispatch => {
         dispatch({
             type: REGISTER_USER,
-            payload: axios.post(`/api/user/register`, {login, password})
+            payload: axios.post(`/api/user/register`, {username, password})
         }).then(
             error => { console.log("Wrong credentials") }
         )
     }
 }
     
-export const logoutUser = (login, password) => dispatch => {
+export const logoutUser = (username, password) => dispatch => {
     return dispatch => {
         dispatch({
             type: LOGOUT_USER,
