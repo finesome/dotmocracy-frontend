@@ -60,40 +60,12 @@ export function loginUser(username, password){
             type: LOGIN_USER,
             payload: axios.post(`/api/user/login`, {username, password})
         }).then(
-<<<<<<< HEAD
-            response => { dispatch(setUser(response.data)) },
-            error => { console.log("Wrong credentials") } // TODO: dispatch wrong credentials or smth
-        ) 
-=======
             (response) => {dispatch(setUser(response.data))},
             (error) => {console.log("Wrong credentials")}) // TODO: dispatch wrong credentials or smth
->>>>>>> dev-makar
     }
 }
 
 export const registerUser = (username, password) => dispatch => {
-<<<<<<< HEAD
-    return dispatch => {
-        dispatch({
-            type: REGISTER_USER,
-            payload: axios.post(`/api/user/register`, {username, password})
-        }).then(
-            error => { console.log("Wrong credentials") }
-        )
-    }
-}
-    
-export const logoutUser = (username, password) => dispatch => {
-    return dispatch => {
-        dispatch({
-            type: LOGOUT_USER,
-            payload: axios.post(`/api/user/logout`, {})
-        }).then(
-            response => dispatch(dropUser()), 
-            error => { console.log("Wrong credentials") }
-        )
-    }
-=======
     dispatch({
         type: REGISTER_USER,
         payload: axios.post(`/api/user/register`, {username, password})
@@ -110,5 +82,4 @@ export const logoutUser = (username, password) => dispatch => {
         payload: axios.post(`/api/user/logout`, {})
     })
     .then(response => dispatch(setUser(response.data)), error=>{console.log("Wrong credentials")})
->>>>>>> dev-makar
 }

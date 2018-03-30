@@ -37,11 +37,6 @@ export default connect (
                     <LoginRegister />
                     <Router>
                         <Switch>
-<<<<<<< HEAD
-                            <Route path="/dashboard" component={Dashboard}/>
-                            <Route path="/decision" component={Decision}/>
-=======
->>>>>>> dev-makar
                             <Route exact path="/" component={Landing}/>
                             <Route path="/decision" component={Decision}/>
                             <Route path="/dashboard" component={Dashboard}/>

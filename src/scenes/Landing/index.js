@@ -60,19 +60,6 @@ const Header = styled.div`
 `;
 
 
-<<<<<<< HEAD
-export default connect(
-    store => ({
-        isAuthenticated: store.user.user !== null,
-    })
-) (class Landing extends Component {    
-    render() {
-        let redirect = null;
-        if (this.props.isAuthenticated) {
-            redirect = <Redirect to="/dashboard"/>;
-        }
-
-=======
 export default connect (
     store => ({
         isAuthenticated: store.user.user !== null,
@@ -84,7 +71,6 @@ export default connect (
         if (this.props.isAuthenticated) {
             redirect = <Redirect to={'/dashboard'}/>;
         }
->>>>>>> dev-makar
         return (
             <div>
                 {redirect}
@@ -104,8 +90,4 @@ export default connect (
             </div>
         );
     }
-<<<<<<< HEAD
-})
-=======
 });
->>>>>>> dev-makar
