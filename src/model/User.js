@@ -6,7 +6,7 @@ export const DROP_USER = "dotmocracy/User/DROP_USER";
 
 /* Reducer */
 const initial_state = {
-    user: "user",
+    user: null,
 };
 
 export default function reducer( state = initial_state, action = {} ) {
