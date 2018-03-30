@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import colors from 'res/colors.json';
 import bannerImage from 'res/images/banner.svg';
@@ -67,6 +65,8 @@ export default connect (
 ) (class Landing extends Component {
 
     render() {
+        console.log("Landing, hello");
+
         let redirect = null;
         if (this.props.isAuthenticated) {
             redirect = <Redirect to={'/dashboard'}/>;

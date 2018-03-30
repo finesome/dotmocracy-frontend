@@ -2,8 +2,6 @@ import axios from 'axios';
 import lodash from 'lodash';
 import { setBoards, setIdeas } from '.';
 
-import boards_json from 'boards.json';
-
 const done = action => action+"_FULFILLED";
 const fail = action => action+"_REJECTED";
 const load = action => action+"_PENDING";
@@ -38,8 +36,9 @@ export function fetchBoards() {
         payload: axios.get(`/api/boards`)
     }).then(
         response => {
+            console.log("Response:", response.data);
             let grouped = lodash.groupBy(response.data, "category");
-            console.log(grouped);
+            console.log("Grouped:", grouped);
             dispatch(setBoards(grouped));
         }, 
         error => { console.log("Error fetching boards:", error) } // TODO: dispatch showErrorMessage(response.statusText) or smth

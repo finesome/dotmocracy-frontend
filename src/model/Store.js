@@ -7,7 +7,6 @@ import { combineReducers } from "redux";
 import AuthAPI from './AuthAPI';
 import Boards from './Boards';
 import DashboardAPI from './DashboardAPI';
-import Toast from './Toast';
 import UI from './LoginUI';
 import User from './User'
 
@@ -17,7 +16,6 @@ const store = createStore(combineReducers({
     auth: AuthAPI,
     boards: Boards,
     dashboard: DashboardAPI,
-    toast: Toast,
     ui: UI,
     user: User
 }), middleware);

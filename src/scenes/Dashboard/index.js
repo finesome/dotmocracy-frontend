@@ -57,6 +57,7 @@ export default connect(
     constructor(props) {
         super(props);
 
+        console.log("Dashboard: fetch boards", this.props.fetchBoards);
         this.props.fetchBoards();
         
         this.state = {
