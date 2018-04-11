@@ -27,7 +27,7 @@ export default connect (
                     <Router>
                         <Switch>
                             <Route exact path="/" component={Landing}/>
-                            <Route component={NotFound}/>
+                            <Redirect to="/"/>
                         </Switch>
                     </Router>
                 </div>
@@ -38,9 +38,10 @@ export default connect (
                     <LoginRegister />
                     <Router>
                         <Switch>
+                            <Route exact path="/" component={Landing} />
                             <Route path="/dashboard" component={Dashboard}/>
                             <Route exact path="/addboard" component={AddBoard}/>
-                            <Route exact path="/" component={Landing} />
+                            <Route path="/decision" component={Decision}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Router>

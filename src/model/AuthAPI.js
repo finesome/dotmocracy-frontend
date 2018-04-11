@@ -76,10 +76,13 @@ export const registerUser = (username, password) => dispatch => {
     )
 }
     
-export const logoutUser = (username, password) => dispatch => {
+export const logoutUser = () => dispatch => {
     dispatch({
         type: LOGOUT_USER,
-        payload: axios.post(`/api/user/logout`, {})
+        payload: axios.post(`/api/user/logout`)
     })
-    .then(response => dispatch(setUser(response.data)), error=>{console.log("Wrong credentials")})
+    .then(
+        response => dispatch(dropUser()), 
+        error=>{console.log("Could not log out")}
+    )
 }
