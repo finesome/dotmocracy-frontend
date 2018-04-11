@@ -30,26 +30,30 @@ export default function reducer(state = initial_state, action = {}) {
 }
 
 /* Action creators */
-export function fetchBoards() {
+export const fetchBoards = () => dispatch => {
     console.log("Fetching boards");
-    return dispatch => dispatch({
+    dispatch({
         type: FETCH_BOARDS,
         payload: axios.get(`/api/boards`)
     }).then(
-        response => {
+        (response) => {
             console.log("Response:", response.value.data);
+            console.log("Re-grouping response with lodash");
             let grouped = lodash.groupBy(response.value.data, "category");
             console.log("Grouped:", grouped);
             dispatch(setBoards(grouped));
         }, 
-        error => { console.log("Error fetching boards:", error) } // TODO: dispatch showErrorMessage(response.statusText) or smth
+        (error) => { 
+            console.log("Error fetching boards:", error)
+            // TODO: dispatch showErrorMessage(response.statusText) or smth
+        } 
     )
 }
 
 
-export function fetchIdeas(board_id) {
+export const fetchIdeas = (board_id) => dispatch => {
     console.log("Fetching ideas");
-    return dispatch => dispatch({
+    dispatch({
         type: FETCH_IDEAS,
         payload: axios.get(`/api/boards/${board_id}/ideas`)
     }).then(
@@ -57,6 +61,9 @@ export function fetchIdeas(board_id) {
             console.log(response.data);
             dispatch(setIdeas(response.data));
         },
-        error => { console.log("Error fetching ideas:", error) } // TODO: dispatch showErrorMessage(response.statusText) or smth
+        error => { 
+            console.log("Error fetching ideas:", error) 
+            // TODO: dispatch showErrorMessage(response.statusText) or smth
+        } 
     )
 }

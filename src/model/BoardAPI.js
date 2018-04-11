@@ -24,9 +24,16 @@ export default function reducer(state = initial_state, action = {}) {
 
 
 /* Action creators */
-export function addBoard(title, category){
-    return {
+export const addBoard = (title, category) => dispatch => {
+    dispatch({
         type: ADD_BOARD,
         payload: axios.post('/api/boards/add', {title, category}),
-    }
+    }).then(
+        (response) => {
+            console.log("Adding board");
+        }, 
+        (error) => {
+            console.log("Error adding board");
+        }
+    )
 }

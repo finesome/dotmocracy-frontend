@@ -64,7 +64,7 @@ export default connect(null,
             { icon: icon_home, text: "boards", link: '/dashboard' },
             // { icon: icon_group, text: "teams", link: '/' },
             { icon: icon_add, text: "create new board", link: '/addboard' },
-            // { icon: icon_settings, text: "settings", link: '/' },
+            { icon: icon_settings, text: "settings", link: '/settings' },
             { icon: icon_logout, text: "log out", link: '/' }
         ];
     }
@@ -92,10 +92,18 @@ export default connect(null,
                         <MenuItemLabel>{this.menuItemsOrder[1].text}</MenuItemLabel>
                     </MenuItem>
                 </Link>
-                <MenuItem key="menu-item-2"
+                <Link to={this.menuItemsOrder[2].link}
+                    key="menu-item-2"
+                    style={{textDecoration: 'none'}}>
+                    <MenuItem>
+                        <MenuItemIcon src={this.menuItemsOrder[2].icon}/>
+                        <MenuItemLabel>{this.menuItemsOrder[2].text}</MenuItemLabel>
+                    </MenuItem>
+                </Link>
+                <MenuItem key="menu-item-3"
                     onClick={this.logoutHandler.bind(this)}>
-                    <MenuItemIcon src={this.menuItemsOrder[2].icon}/>
-                    <MenuItemLabel>{this.menuItemsOrder[2].text}</MenuItemLabel>
+                    <MenuItemIcon src={this.menuItemsOrder[3].icon}/>
+                    <MenuItemLabel>{this.menuItemsOrder[3].text}</MenuItemLabel>
                 </MenuItem>
 
                 {/* {this.menuItemsOrder.map( ( item, i ) => (

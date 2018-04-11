@@ -20,8 +20,8 @@ export default function reducer( state = initial_state, action = {} ) {
 }
 
 /* Action creators */
-export function setIdeas(ideas) {
-    return dispatch => dispatch({
+export const setIdeas = (ideas) => dispatch => {
+    dispatch({
         type: SET_IDEAS,
         payload: { ideas }
     }).then(

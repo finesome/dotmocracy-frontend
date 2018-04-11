@@ -54,15 +54,26 @@ export const fetchUser = user => dispatch => {
     }
 }
 
-export function loginUser(username, password){
-    return dispatch => {
-        dispatch({
-            type: LOGIN_USER,
-            payload: axios.post(`/api/user/login`, {username, password})
-        }).then(
-            (response) => {dispatch(setUser(response.data))},
-            (error) => {console.log("Wrong credentials")}) // TODO: dispatch wrong credentials or smth
-    }
+export const loginUser = (username, password) => dispatch => {
+    dispatch({
+        type: LOGIN_USER,
+        payload: axios.post(`/api/user/login`, {username, password})
+    }).then(
+        (response) => {
+            dispatch(setUser(response.data));
+            // localStorage.setItem("user", "alisher");
+            // console.log("Saved user to local storage");
+        },
+        (error) => {
+            console.log("Wrong credentials");
+            console.log("Fake for now");
+            dispatch(setUser("alisher"));
+            localStorage.setItem("user", "alisher");
+            console.log("Saved user to local storage");
+            // TODO: dispatch wrong credentials or smth
+        }
+    ) 
+    
 }
 
 export const registerUser = (username, password) => dispatch => {
@@ -80,9 +91,14 @@ export const logoutUser = () => dispatch => {
     dispatch({
         type: LOGOUT_USER,
         payload: axios.post(`/api/user/logout`)
-    })
-    .then(
-        response => dispatch(dropUser()), 
-        error=>{console.log("Could not log out")}
+    }).then(
+        (response) => {
+            dispatch(dropUser())
+        }, 
+        (error) => {
+            console.log("Could not log out");
+            console.log("Fake for now");
+            dispatch(dropUser());
+        }
     )
 }

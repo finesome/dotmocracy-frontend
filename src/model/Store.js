@@ -8,8 +8,9 @@ import AuthAPI from './AuthAPI';
 import BoardAPI from './BoardAPI';
 import Boards from './Boards';
 import DashboardAPI from './DashboardAPI';
-import UI from './LoginUI';
-import User from './User'
+import Ideas from './Ideas';
+import LoginUI from './LoginUI';
+import User from './User';
 
 
 const middleware = applyMiddleware(promise(), thunk, logger);
@@ -18,7 +19,8 @@ const store = createStore(combineReducers({
     board: BoardAPI,
     boards: Boards,
     dashboard: DashboardAPI,
-    ui: UI,
+    ideas: Ideas,
+    ui: LoginUI,
     user: User
 }), middleware);
 

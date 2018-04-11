@@ -20,11 +20,16 @@ export default function reducer( state = initial_state, action = {} ) {
 }
 
 /* Action creators */
-export function setBoards(boards) {
-    return dispatch => dispatch({
+export const setBoards = (boards) => dispatch => {
+    dispatch({
         type: SET_BOARDS,
         payload: { boards }
     }).then(
-        error => { console.log("It cannot happen") }
+        (response) => {
+            console.log("Set boards");
+        },
+        (error) => { 
+            console.log("Error setting boards");
+        }
     )
 }
