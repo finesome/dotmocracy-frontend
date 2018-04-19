@@ -54,7 +54,7 @@ export const fetchUser = user => dispatch => {
             error => dispatch(dropUser()) // TODO: dispatch showErrorMessage(response.statusText) or smth
         )
     }
-}
+};
 
 export function loginUser(username, password){
     return dispatch => {
@@ -75,7 +75,7 @@ export const registerUser = (username, password) => dispatch => {
         response => dispatch(setUser(response.data)),
         error=>{console.log("Wrong credentials")}
     )
-}
+};
 
 export const logoutUser = (username, password) => dispatch => {
     dispatch({
@@ -83,4 +83,4 @@ export const logoutUser = (username, password) => dispatch => {
         payload: axios.post(`${URL}/api/user/logout`, {})
     })
     .then(response => dispatch(setUser(response.data)), error=>{console.log("Wrong credentials")})
-}
+};
