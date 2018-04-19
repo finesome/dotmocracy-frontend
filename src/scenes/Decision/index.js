@@ -3,10 +3,13 @@ import { PieChart } from 'react-d3-components';
 import { scaleOrdinal, domain, range } from 'd3';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
+import { connect } from 'react-redux';
 
 import { DefaultButton as Button } from 'components/Buttons';
 import { Side as SideMenu, Sticky as HeaderMenu } from 'components/Menus';
 import Idea from './components/Idea';
+
+import { fetchIdeas } from 'model';
 
 
 const DecisionWrapper = styled.div`
@@ -71,7 +74,15 @@ const ConfirmVotesButton = styled( Button )`
 `;
 
 
-export default class Decision extends Component {
+export default connect(
+    store => ({
+        ideas: store.boards.ideas,
+        fetch_ideas: store.dashboard.fetch_ideas
+    }),
+    {
+        fetchIdeas
+    }
+) (class Decision extends Component {
     constructor(props) {
         super(props);
 
@@ -80,6 +91,9 @@ export default class Decision extends Component {
         const id = parsed[parsed.length - 1];
 
         console.log("Decision id:", id);
+
+        console.log("Fetching ideas of board 1");
+        this.props.fetchIdeas(id);
 
         this.state = {
             decision: {
@@ -128,7 +142,12 @@ export default class Decision extends Component {
             .range( this.state.decision.ideas.map( ( idea ) => idea.color ) );
     }
 
+
     render() {
+        let ideas = null;
+        if (this.props.ideas) {
+            ideas = <p>{JSON.stringify(this.props.ideas)}</p>;   
+        }
         return (
             <div id="decision">
                 <div>
@@ -137,6 +156,7 @@ export default class Decision extends Component {
                         <DecisionNameWrapper>
                             <DecisionName>{this.state.decision.name}</DecisionName>
                         </DecisionNameWrapper>
+                        {ideas}
                         <DecisionDescWrapper>
                             <IdeasWrapper
                                 colCount={Math.round( (this.state.width - (240 + this.state.pieChart.size)) / 320 )}>
@@ -210,4 +230,4 @@ export default class Decision extends Component {
         });
         // console.log(this.state, this.state.decision.ideas, this.state.decision.ideas.map);
     }
-}
+})

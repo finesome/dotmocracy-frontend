@@ -71,8 +71,6 @@ export const loginUser = (username, password) => dispatch => {
         },
         error => {
             console.log("Wrong credentials", error);
-
-            // dispatch(setUser({id: 14, username: "miras"}))
             // TODO: dispatch showErrorMessage(response.statusText) or smth
         }
     )
