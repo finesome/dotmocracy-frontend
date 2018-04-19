@@ -25,6 +25,11 @@ export const setIdeas = (ideas) => dispatch => {
         type: SET_IDEAS,
         payload: { ideas }
     }).then(
-        error => { console.log("It cannot happen") }
+        response => {
+            console.log("Set ideas");
+        },
+        error => { 
+            console.log("It cannot happen");
+        }
     )
 }

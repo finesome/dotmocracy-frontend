@@ -6,6 +6,8 @@ const done = action => action+"_FULFILLED";
 const fail = action => action+"_REJECTED";
 const load = action => action+"_PENDING";
 
+const URL = "http://192.168.137.131:8080";
+
 /* Action types */
 const FETCH_BOARDS = "dotmocracy/Dashboard/FETCH_BOARDS";
 const FETCH_IDEAS = "dotmocracy/Dashboard/FETCH_IDEAS";
@@ -34,7 +36,7 @@ export const fetchBoards = () => dispatch => {
     console.log("Fetching boards");
     dispatch({
         type: FETCH_BOARDS,
-        payload: axios.get(`/api/boards`)
+        payload: axios.get(`${URL}/api/boards`)
     }).then(
         (response) => {
             console.log("Response:", response.value.data);
@@ -55,7 +57,7 @@ export const fetchIdeas = (board_id) => dispatch => {
     console.log("Fetching ideas");
     dispatch({
         type: FETCH_IDEAS,
-        payload: axios.get(`/api/boards/${board_id}/ideas`)
+        payload: axios.get(`${URL}/api/boards/${board_id}/ideas`)
     }).then(
         response => {
             console.log(response.data);

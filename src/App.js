@@ -51,6 +51,7 @@ export default connect (
                             <Route exact path="/" component={Landing} />
                             <Route path="/dashboard" component={Dashboard}/>
                             <Route exact path="/addboard" component={AddBoard}/>
+                            <Route exact path="/logout" component={Landing}/>
                             <Route path="/decision" component={Decision}/>
                             <Route exact path="/settings" component={Settings}/>
                             <Route component={NotFound}/>

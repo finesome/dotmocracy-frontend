@@ -13,6 +13,7 @@ const initial_state = {
     add_board: {load: null, fail: null, done: null},
     
 };
+
 export default function reducer(state = initial_state, action = {}) {
     switch (action.type) {
       case done(ADD_BOARD): return {...state, add_board: {done: true}};

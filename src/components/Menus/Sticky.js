@@ -73,7 +73,7 @@ const UserInfoWrapper = styled.div`
 
 export default connect (
     store => ({
-        username: store.user.user
+        username: store.user.user.user.username
     }),
     {
         
@@ -87,7 +87,7 @@ export default connect (
                     <SiteName>dotmocracy</SiteName>
                 </SiteInfoWrapper>
                 <UserInfoWrapper>
-                    <UserName>{this.props.username.user}</UserName>
+                    <UserName>{this.props.username}</UserName>
                     <UserAvatar src={avatar}/>
                 </UserInfoWrapper>
             </HeaderDiv>
