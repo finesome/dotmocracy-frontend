@@ -113,7 +113,6 @@ export default connect(
                     <SectionWrapper>                        
                         <ViewModeWrapper>
                             <SwitcherActive>Settings</SwitcherActive>
-                            <SwitcherDivider> / </SwitcherDivider>
                         </ViewModeWrapper>
                         <SettingsWrapper>
                             {content}

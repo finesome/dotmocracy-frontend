@@ -7,6 +7,7 @@ const fail = action => action+"_REJECTED";
 const load = action => action+"_PENDING";
 
 const URL = "http://192.168.137.131:8080";
+// const URL = "http://localhost:8080";
 
 /* Action types */
 const FETCH_BOARDS = "dotmocracy/Dashboard/FETCH_BOARDS";
@@ -43,10 +44,106 @@ export const fetchBoards = () => dispatch => {
             console.log("Re-grouping response with lodash");
             let grouped = lodash.groupBy(response.value.data, "category");
             console.log("Grouped:", grouped);
-            dispatch(setBoards(grouped));
+
+            let array = [];
+            for (let key in grouped) {
+                let entry = {name: key, decisions: grouped[key]};
+                array.push(entry);
+            }
+
+            dispatch(setBoards(array));
         }, 
         (error) => { 
-            console.log("Error fetching boards:", error)
+            console.log("Error fetching boards:", error);
+            
+            // console.log("Fake for now");
+            // let data = [
+            //     {
+            //         id: "0",
+            //         name: "Important decision 11",
+            //         category: "none",
+            //         isTeam: true,
+            //         ideas: [
+            //             { name: "Idea 111", score: 284 },
+            //             { name: "Idea 112", score: 23 },
+            //             { name: "Idea 113", score: 354 },
+            //             { name: "Idea 114", score: 61 }
+            //         ]
+            //     },
+            //     {
+            //         id: "1",
+            //         name: "Important decision 12",
+            //         category: "none",
+            //         subName: "Kakashi",
+            //         isTeam: true,
+            //         ideas: [
+            //             { name: "Idea 121", score: 284 },
+            //             { name: "Idea 122", score: 23 },
+            //             { name: "Idea 123", score: 354 }
+            //         ]
+            //     },
+            //     {
+            //         id: "3",
+            //         name: "Important decision 21",
+            //         category: "food",
+            //         subName: "Sakashi",
+            //         isTeam: true,
+            //         ideas: [
+            //             { name: "Idea 211", score: 284 },
+            //             { name: "Idea 212", score: 23 },
+            //             { name: "Idea 213", score: 354 },
+            //             { name: "Idea 214", score: 61 }
+            //         ]
+            //     },
+            //     {
+            //         id: "4",
+            //         name: "Important decision 22",
+            //         category: "food",
+            //         isTeam: true,
+            //         ideas: [
+            //             { name: "Idea 221", score: 284 },
+            //             { name: "Idea 222", score: 23 }
+            //         ]
+            //     },
+            //     {
+            //         id: "9",
+            //         name: "Important decision 31",
+            //         category: "travel",
+            //         isTeam: true,
+            //         ideas: [
+            //             { name: "Idea 311", score: 284 },
+            //             { name: "Idea 312", score: 23 },
+            //             { name: "Idea 313", score: 354 },
+            //             { name: "Idea 314", score: 61 }
+            //         ]
+            //     },
+            //     {
+            //         id: "10",
+            //         name: "Important decision 32",
+            //         category: "travel",
+            //         isTeam: true,
+            //         ideas: [
+            //             { name: "Idea 321", score: 284 },
+            //             { name: "Idea 322", score: 23 },
+            //             { name: "Idea 323", score: 354 },
+            //             { name: "Idea 324", score: 61 }
+            //         ]
+            //     }
+            // ];
+
+            // console.log("Boards data:", data);
+            // console.log("Re-grouping boards data with lodash");
+            // let grouped = lodash.groupBy(data, "category");
+            // // console.log("Grouped:", grouped);
+            // let array = [];
+            // for (let key in grouped) {
+            //     let entry = {name: key, decisions: grouped[key]};
+            //     array.push(entry);
+            // } 
+
+            // console.log("Build array from object:", array);
+            // dispatch(setBoards(array));
+
             // TODO: dispatch showErrorMessage(response.statusText) or smth
         } 
     )

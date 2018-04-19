@@ -72,8 +72,15 @@ const ConfirmVotesButton = styled( Button )`
 
 
 export default class Decision extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        const path = this.props.location.pathname;
+        const parsed = path.split('/');
+        const id = parsed[parsed.length - 1];
+
+        console.log("Decision id:", id);
+
         this.state = {
             decision: {
                 name: "Important decision 11",

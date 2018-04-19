@@ -64,12 +64,15 @@ export const loginUser = (username, password) => dispatch => {
         type: LOGIN_USER,
         payload: axios.post(`${URL}/api/user/login`, {username, password})
     }).then(
-        response => {
-            console.log("Response:", response.value.data);
-            dispatch(setUser(response.value.data));
+        response => {            
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGHHHH");
+            console.log(response);
+            dispatch(setUser(response.value));
         },
         error => {
             console.log("Wrong credentials", error);
+
+            // dispatch(setUser({id: 14, username: "miras"}))
             // TODO: dispatch showErrorMessage(response.statusText) or smth
         }
     )
@@ -98,7 +101,7 @@ export const logoutUser = () => dispatch => {
     })
     .then(
         response => {
-            dispatch(dropUser());
+            dispatch(dropUser());            
         }, 
         error => {
             console.log("Wrong credentials", error);

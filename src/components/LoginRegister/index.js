@@ -29,14 +29,9 @@ const Modal = styled( Card )`
 `;
 
 const LogoImage = styled.img`
+    display: block;
     margin: 8px auto;
-`;
-
-const Logo = styled.div`
-    width: 200px;
-    height: 80px;
-    margin: 8px auto;
-    background-color: #944040;
+    height: 300px;
 `;
 
 const FormSubmitWrapper = styled.div`
