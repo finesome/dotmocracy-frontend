@@ -3,19 +3,25 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 
-import {combineReducers} from "redux";
-import User from './User'
-import AuthAPI from './AuthAPI'
-import Toast from './Toast'
-import UI from './LoginUI';
+import { combineReducers } from "redux";
+import AuthAPI from './AuthAPI';
+import BoardAPI from './BoardAPI';
+import Boards from './Boards';
+import DashboardAPI from './DashboardAPI';
+import Ideas from './Ideas';
+import LoginUI from './LoginUI';
+import User from './User';
 
 
 const middleware = applyMiddleware(promise(), thunk, logger);
 const store = createStore(combineReducers({
-    ui: UI,
-    user: User,
     auth: AuthAPI,
-    toast: Toast
+    board: BoardAPI,
+    boards: Boards,
+    dashboard: DashboardAPI,
+    ideas: Ideas,
+    ui: LoginUI,
+    user: User
 }), middleware);
 
 

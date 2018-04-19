@@ -1,8 +1,8 @@
 import { hideLoginRegisterForm } from '.'
 
 /* Action types */
-const SET_USER = "dotmocracy/User/set_user";
-const DROP_USER = "dotmocracy/User/drop_user";
+const SET_USER = "dotmocracy/User/SET_USER";
+export const DROP_USER = "dotmocracy/User/DROP_USER";
 
 /* Reducer */
 const initial_state = {
@@ -22,16 +22,35 @@ export default function reducer( state = initial_state, action = {} ) {
 
 
 /* Action creators */
-export const setUser = ( user ) => {
-    return ( dispatch ) => {
-        dispatch( {
+export const setUser = (user) => {
+    return dispatch => {
+        dispatch({
             type: SET_USER,
             payload: {user}
-        } );
+        });
         dispatch( hideLoginRegisterForm() );
     }
-};
+}
 
-export const dropUser = () => ({
-    type: DROP_USER
-});
+export const dropUser = () => {
+    return dispatch => {
+        dispatch({
+            type: DROP_USER
+        });
+        localStorage.removeItem("user");
+    }
+}
+
+export const checkAuth = () => {
+    return dispatch => {
+        const user = localStorage.getItem('user');
+        if (!user) {
+            console.log("No user in local storage");
+            dispatch(dropUser());
+        } else {
+            console.log("There IS a user in local storage");
+            dispatch(setUser(user));
+        }
+        // smth with holding?
+    }
+}

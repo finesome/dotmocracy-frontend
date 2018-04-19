@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {setUser, dropUser} from '.'
+import { setUser, dropUser } from '.'
 
 const done = action => action+"_FULFILLED";
 const fail = action => action+"_REJECTED";
@@ -8,10 +8,10 @@ const load = action => action+"_PENDING";
 const URL = "http://localhost:8080";
 
 /* Action types */
-const FETCH_USER = "dotmocracy/AuthAPI/fetch_user";
-const LOGIN_USER = "dotmocracy/AuthAPI/LOGIN_USER";
-const REGISTER_USER = "dotmocracy/AuthAPI/REGISTER_USER";
-const LOGOUT_USER = "dotmocracy/AuthAPI/LOGOUT_USER";
+export const FETCH_USER = "dotmocracy/AuthAPI/FETCH_USER";
+export const LOGIN_USER = "dotmocracy/AuthAPI/LOGIN_USER";
+export const REGISTER_USER = "dotmocracy/AuthAPI/REGISTER_USER";
+export const LOGOUT_USER = "dotmocracy/AuthAPI/LOGOUT_USER"
 
 /* Reducer */
 const initial_state = {
@@ -45,18 +45,22 @@ export default function reducer(state = initial_state, action = {}) {
 
 /* Action creators */
 export const fetchUser = user => dispatch => {
-    dispatch({
-        type: FETCH_USER,
-        payload: axios.get(`${URL}/api/user`)
-    })
-    .then(response=> {dispatch(setUser(response.data))}, error=> dispatch(dropUser())) // TODO: dispatch showErrorMessage(response.statusText) or smth
+    return dispatch => {
+        dispatch({
+            type: FETCH_USER,
+            payload: axios.get(`/api/user`)
+        }).then(
+            response => { dispatch(setUser(response.data)) },
+            error => dispatch(dropUser()) // TODO: dispatch showErrorMessage(response.statusText) or smth
+        )
+    }
 }
 
 export function loginUser(username, password){
     return dispatch => {
         dispatch({
             type: LOGIN_USER,
-            payload: axios.post(`${URL}/api/user/login`, {username, password})
+            payload: axios.post(`/api/user/login`, {username, password})
         }).then((response) => {dispatch(setUser(response.data))},
                 (error) => {console.log("Wrong credentials")}) // TODO: dispatch wrong credentials or smth
     }

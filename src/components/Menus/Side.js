@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { logoutUser } from 'model';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
@@ -50,32 +52,67 @@ const MenuItemLabel = styled.span`
 `;
 
 
-export default class Side extends Component {
+export default connect(null,
+    {
+        logoutUser
+    }
+) (class Side extends Component {
 
     constructor() {
         super();
         this.menuItemsOrder = [
             { icon: icon_home, text: "boards", link: '/dashboard' },
-            { icon: icon_group, text: "teams", link: '/' },
-            { icon: icon_add, text: "create new board", link: '/' },
-            { icon: icon_settings, text: "settings", link: '/' },
+            // { icon: icon_group, text: "teams", link: '/' },
+            { icon: icon_add, text: "create new board", link: '/addboard' },
+            { icon: icon_settings, text: "settings", link: '/settings' },
             { icon: icon_logout, text: "log out", link: '/' }
         ];
+    }
+
+    logoutHandler() {
+        this.props.logoutUser();
     }
 
     render() {
         return (
             <SideDiv>
-                {this.menuItemsOrder.map( ( item, i ) => (
+                <Link to={this.menuItemsOrder[0].link}
+                    key="menu-item-0"
+                    style={{textDecoration: 'none'}}>
+                    <MenuItem>
+                        <MenuItemIcon src={this.menuItemsOrder[0].icon}/>
+                        <MenuItemLabel>{this.menuItemsOrder[0].text}</MenuItemLabel>
+                    </MenuItem>
+                </Link>
+                <Link to={this.menuItemsOrder[1].link}
+                    key="menu-item-1"
+                    style={{textDecoration: 'none'}}>
+                    <MenuItem>
+                        <MenuItemIcon src={this.menuItemsOrder[1].icon}/>
+                        <MenuItemLabel>{this.menuItemsOrder[1].text}</MenuItemLabel>
+                    </MenuItem>
+                </Link>
+                <Link to={this.menuItemsOrder[2].link}
+                    key="menu-item-2"
+                    style={{textDecoration: 'none'}}>
+                    <MenuItem>
+                        <MenuItemIcon src={this.menuItemsOrder[2].icon}/>
+                        <MenuItemLabel>{this.menuItemsOrder[2].text}</MenuItemLabel>
+                    </MenuItem>
+                </Link>
+                <MenuItem key="menu-item-3"
+                    onClick={this.logoutHandler.bind(this)}>
+                    <MenuItemIcon src={this.menuItemsOrder[3].icon}/>
+                    <MenuItemLabel>{this.menuItemsOrder[3].text}</MenuItemLabel>
+                </MenuItem>
+
+                {/* {this.menuItemsOrder.map( ( item, i ) => (
                     <Link to={{ pathname: item.link }} key={"menu-item-" + i}
                           style={{ textDecoration: 'none' }}>
-                        <MenuItem>
-                            <MenuItemIcon src={item.icon}/>
-                            <MenuItemLabel>{item.text}</MenuItemLabel>
-                        </MenuItem>
+                        
                     </Link>
-                ) )}
+                ) )} */}
             </SideDiv>
         );
     }
-}
+});

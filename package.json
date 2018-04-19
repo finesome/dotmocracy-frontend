@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "d3": "^5.0.0",
+    "lodash": "^4.17.5",
+    "nock": "^9.2.5",
     "react": "^16.2.0",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.2.0",
@@ -21,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -rf ../dotmocracy-backend/web/* && mv build/* ../dotmocracy-backend/web/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npm run build && mv build/index.html build/200.html && surge build dotmocracy.surge.sh"

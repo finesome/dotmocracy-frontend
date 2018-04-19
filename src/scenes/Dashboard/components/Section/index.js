@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 import Decision from '../Decision';
@@ -55,9 +56,12 @@ export default class Section extends Component {
                 <SectionName>{this.props.section.name}</SectionName>
                 <DecisionsWrapper colCount={Math.round( (this.state.width - 240) / 320 )}>
                     {this.props.section.decisions.map( ( decision, i ) =>
-                        <DecisionWrapper key={"decision-item-wrapper" + i}>
-                            <Decision decision={decision} key={"decision-item-" + i}/>
-                        </DecisionWrapper>
+                        <Link to="/decision"
+                            style={{textDecoration: 'none'}}>
+                            <DecisionWrapper key={"decision-item-wrapper" + i}>
+                                <Decision decision={decision} key={"decision-item-" + i}/>
+                            </DecisionWrapper>
+                        </Link>
                     )}
                 </DecisionsWrapper>
             </SectionWrapper>

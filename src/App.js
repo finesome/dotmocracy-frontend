@@ -3,32 +3,41 @@ import 'App.css';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 
 import LoginRegister from 'components/LoginRegister';
-import Landing from 'scenes/Landing';
-import NotFound from 'scenes/NotFound';
+import AddBoard from 'scenes/AddBoard';
 import Dashboard from 'scenes/Dashboard';
 import Decision from 'scenes/Decision';
+import Landing from 'scenes/Landing';
+import NotFound from 'scenes/NotFound';
+import Settings from 'scenes/Settings';
+
 import { connect } from 'react-redux';
-
-
+import { checkAuth } from 'model';
 
 export default connect (
     store => ({
-        isAuthenticated: store.user.user !== null,
-    })
+        isAuthenticated: store.user.user !== null
+    }),
+    {
+        checkAuth
+    }
 ) (class App extends Component {
+    
+    componentWillMount() {
+        this.props.checkAuth();
+    }
+
     render() {
         const redirect = <Redirect to={{path: "/"}}/>;
+        console.log("isAuthenticated:", this.props.isAuthenticated);
 
-        if (this.props.isAuthenticated) {
+        if (!this.props.isAuthenticated) {
             return (
                 <div>
-                    {/* <Toaster /> */}
                     <LoginRegister />
                     <Router>
                         <Switch>
-                            {/*<Route exact path="/" component={Dashboard}/>*/}
                             <Route exact path="/" component={Landing}/>
-                            <Route component={NotFound}/>
+                            <Redirect to="/"/>
                         </Switch>
                     </Router>
                 </div>
@@ -36,13 +45,14 @@ export default connect (
         } else {
             return (
                 <div>
-                    {/* <Toaster /> */}
                     <LoginRegister />
                     <Router>
                         <Switch>
+                            <Route exact path="/" component={Landing} />
                             <Route path="/dashboard" component={Dashboard}/>
-                            <Route exact path="/decision" component={Decision}/>
-                            <Route exact path="/" component={Landing}/>
+                            <Route exact path="/addboard" component={AddBoard}/>
+                            <Route path="/decision" component={Decision}/>
+                            <Route exact path="/settings" component={Settings}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Router>
