@@ -4,6 +4,7 @@ import colors from 'res/colors.json';
 import burger from 'res/icons/burger.svg';
 import avatar from 'res/icons/avatar_placeholder.svg';
 
+import { connect } from 'react-redux';
 
 const HeaderDiv = styled.div`
     width: 100%;
@@ -70,8 +71,14 @@ const UserInfoWrapper = styled.div`
     float: right;
 `;
 
-
-export default class Sticky extends Component {
+export default connect (
+    store => ({
+        username: store.user.user
+    }),
+    {
+        
+    }
+) (class Sticky extends Component {
     render() {
         return (
             <HeaderDiv>
@@ -80,10 +87,10 @@ export default class Sticky extends Component {
                     <SiteName>dotmocracy</SiteName>
                 </SiteInfoWrapper>
                 <UserInfoWrapper>
-                    <UserName>bro.grammar@dotmocracy.org</UserName>
+                    <UserName>{this.props.username.user}</UserName>
                     <UserAvatar src={avatar}/>
                 </UserInfoWrapper>
             </HeaderDiv>
         );
     }
-}
+});
