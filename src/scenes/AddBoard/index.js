@@ -6,7 +6,7 @@ import { Side as SideMenu, Sticky as HeaderMenu } from 'components/Menus';
 import Idea from './components/Idea';
 import AddIdea from './components/AddIdea';
 
-import {addBoard} from 'model';
+import { addBoard } from 'model';
 import { DefaultButton as Button } from 'components/Buttons';
 import TextInputBoard from 'components/TextInputBoard';
 
@@ -37,18 +37,15 @@ const IdeasWrapper = styled.div`
 `;
 
 const DecisionNameWrapper = styled.div`
-    padding: 50px 40px;
+    padding: 20px 40px;
     padding-bottom: 0;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
 `;
 
 const DecisionName = styled.div`
     line-height: 36px;
     font-stretch: condensed;
-    font-color: #009688;
-    font-size:36px !important;
-    
 `;
 
 const DecisionCategory = styled.div`
@@ -71,32 +68,78 @@ const StyledButton = styled( Button )`
     margin:40px;
 `;
 
+const ViewModeWrapper = styled.div`
+    padding: 20px 40px;
+    padding-bottom: 0;
+`;
 
+const Switcher = styled.h1`
+    display: inline;
+    
+    font-size: 48px;
+    line-height: 56px;
+    font-stretch: condensed;
+`;
 
-export default connect(null, {
+const SwitcherActive = styled( Switcher )``;
+
+export default connect( null, {
     addBoard
-})(class AddBoard extends Component {
-    constructor(props){
-        super(props);
+} )( class AddBoard extends Component {
+    constructor( props ) {
+        super( props );
         this.state = {
             ideas: [
-                { name:"", desc:""},
-                { name:"", desc:""},
-                { name:"", desc:""}
+                { name: "", desc: "" },
+                { name: "", desc: "" },
+                { name: "", desc: "" }
             ]
         }
     }
 
     submitForm( event ) {
         event.preventDefault();
-        this.props.addBoard( this.state.decisionName, this.state.categoryName );
+        this.props.addBoard( this.state.name, this.state.category, this.state.ideas );
     }
 
-    inputChangeHandler( event ) {
-        this.setState( {
-            ...this.state,
-            [event.target.type]: event.target.value,
-        } );
+    nameChangeHandler( event ) {
+        let newState = {...this.state};
+        newState.name = event.target.value;
+        this.setState( newState );
+    }
+
+    categoryChangeHandler( event ) {
+        let newState = {...this.state};
+        newState.category = event.target.value;
+        this.setState( newState );
+    }
+
+    deleteHandler( index ) {
+        let newState = { ...this.state };
+        newState.ideas = [...this.state.ideas];
+        newState.ideas.splice( +index, 1 );
+        this.setState( newState );
+    }
+
+    updateNameHandler( index, value ) {
+        let newState = { ...this.state };
+        newState.ideas = [...this.state.ideas];
+        newState.ideas[index].name = value;
+        this.setState( newState );
+    }
+
+    updateDescHandler( index, value ) {
+        let newState = {};
+        newState.ideas = [...this.state.ideas];
+        newState.ideas[index].desc = value;
+        this.setState( newState );
+    }
+
+    addIdeaHandler() {
+        let newState = {};
+        newState.ideas = [...this.state.ideas];
+        newState.ideas.push( { name: "", desc: "" } );
+        this.setState( newState );
     }
 
     render() {
@@ -105,29 +148,38 @@ export default connect(null, {
                 <div>
                     <SideMenu/>
                     <DecisionWrapper>
+                        <ViewModeWrapper>
+                            <SwitcherActive>New Board</SwitcherActive>
+                        </ViewModeWrapper>
                         <DecisionNameWrapper>
                             <DecisionName>
-                                <TextInputBoard type="decisionName" name="decisionName" placeholder="Add board name" maxLength="200" fontSize="28px" color="#009688" 
-                                    onChange={this.inputChangeHandler.bind( this )}/>
+                                <TextInputBoard placeholder="Add board name"
+                                                maxLength="200" fontSize="28px" color="#009688"
+                                                onChange={this.nameChangeHandler.bind( this )}/>
                             </DecisionName>
                             <DecisionCategory>
-                                <TextInputBoard type="categoryName" name="categoryName" placeholder="Choose category" maxLength="100" fontSize="28px" text-align="right"
-                                onChange={this.inputChangeHandler.bind( this )}/>
+                                <TextInputBoard placeholder="Choose category"
+                                                maxLength="100" fontSize="28px" color="#009688"
+                                                onChange={this.categoryChangeHandler.bind( this )}/>
                             </DecisionCategory>
                         </DecisionNameWrapper>
                         <IdeasWrapper colCount={Math.round( (this.state.width - 240) / 320 )}>
                             {this.state.ideas.map( ( idea, i ) =>
-                                <IdeaWrapper>
-                                    <Idea idea={idea} key={"idea-item-" + i}/>
+                                <IdeaWrapper key={"idea-item-" + i}>
+                                    <Idea idea={idea} index={i}
+                                          deleteIdea={this.deleteHandler.bind( this )}
+                                          updateName={this.updateNameHandler.bind( this )}
+                                          updateDesc={this.updateDescHandler.bind( this )}
+                                    />
                                 </IdeaWrapper>
                             )}
                             <IdeaWrapper>
-                                <AddIdea/>
+                                <AddIdea addIdea={this.addIdeaHandler.bind( this )}/>
                             </IdeaWrapper>
                         </IdeasWrapper>
                     </DecisionWrapper>
                     <StyledButton name="createBoardButton"
-                        onClick={this.submitForm.bind( this )}>Create board</StyledButton>
+                                  onClick={this.submitForm.bind( this )}>Create board</StyledButton>
                 </div>
                 <HeaderMenu/>
             </div>
@@ -156,4 +208,4 @@ export default connect(null, {
     componentWillUnmount() {
         window.removeEventListener( "resize", this.updateDimensions.bind( this ) );
     }
-})
+} )

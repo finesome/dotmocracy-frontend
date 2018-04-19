@@ -40,7 +40,6 @@ export default class TextInputBoard extends Component {
                 counter: event.target.value.length
             } );
         }
-
         if ( this.props.onChange ) {
             this.props.onChange( event );
         }

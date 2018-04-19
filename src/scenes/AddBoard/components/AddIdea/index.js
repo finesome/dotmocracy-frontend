@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import colors from 'res/colors.json';
 
 import { Wrapper } from 'components/Cards';
 import addImage from 'res/images/plus-button.svg';
@@ -29,7 +28,7 @@ export default class AddIdea extends Component {
                 <Header>
                     Add new idea
                     <Link>
-                        <NewIdea src={addImage} alt="add"/>
+                        <NewIdea src={addImage} alt="add" onClick={this.props.addIdea}/>
                     </Link>
                 </Header>
             </Wrapper>
