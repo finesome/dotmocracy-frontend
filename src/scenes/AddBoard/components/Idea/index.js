@@ -15,7 +15,7 @@ const Header = styled.h1`
     margin-bottom: 12px;
     display:flex;
     flex-direction:row;
-`
+`;
 
 const Description = styled.p`
     font-size: 16px;
@@ -32,30 +32,27 @@ const DeleteBoard = styled.img`
 
 export default class Idea extends Component {
 
-    inputChangeHandler( event ) {
-        this.setState( {
-            ...this.state,
-            [event.target.type]: event.target.value,
-        } );
-    }
-
     render() {
         return (
-            <form>
-                <Wrapper>
-                    <Header>
-                        <TextInputBoard type="optionName" name="optionName" placeholder="Add option name" fontSize="24px"
-                        onChange={this.inputChangeHandler.bind( this )}/>
-                        <Link>
-                            <DeleteBoard src={deleteImage} alt="delete"/>
-                        </Link>
-                    </Header>
-                    <Description>
-                        <TextArea type="optionDesc" name="optionDesc" placeholder="Add option description. You can weite advantages and disadvantages of this option." fontSize="18px"
-                        onChange={this.inputChangeHandler.bind( this )}/>
-                    </Description>
-                </Wrapper>
-            </form>
+            <Wrapper>
+
+                <Header>
+                    <TextInputBoard type="optionName" name="optionName"
+                                    placeholder="Add option name" fontSize="24px"
+                                    value={this.props.idea.name}
+                                    onChange={(event) => this.props.updateName(this.props.index, event.target.value)}/>
+                    <Link>
+                        <DeleteBoard src={deleteImage} alt="delete"
+                                      onClick={() => this.props.deleteIdea(this.props.index)}/>
+                    </Link>
+                </Header>
+                <Description>
+                        <TextArea type="optionDesc" name="optionDesc" fontSize="18px"
+                                  placeholder="Add option description. You can list advantages and disadvantages of this option."
+                                  value={this.props.idea.desc}
+                                  onChange={(event) => this.props.updateDesc(this.props.index, event.target.value)}/>
+                </Description>
+            </Wrapper>
         );
     }
 };

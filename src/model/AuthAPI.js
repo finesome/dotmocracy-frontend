@@ -9,7 +9,7 @@ const load = action => action+"_PENDING";
 export const FETCH_USER = "dotmocracy/AuthAPI/FETCH_USER";
 export const LOGIN_USER = "dotmocracy/AuthAPI/LOGIN_USER";
 export const REGISTER_USER = "dotmocracy/AuthAPI/REGISTER_USER";
-export const LOGOUT_USER = "dotmocracy/AuthAPI/LOGOUT_USER"
+export const LOGOUT_USER = "dotmocracy/AuthAPI/LOGOUT_USER";
 
 /* Reducer */
 const initial_state = {

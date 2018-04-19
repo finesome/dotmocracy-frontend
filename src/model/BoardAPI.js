@@ -1,5 +1,4 @@
 import axios from 'axios'
-import {setUser, dropUser} from '.'
 
 const done = action => action+"_FULFILLED";
 const fail = action => action+"_REJECTED";
@@ -24,10 +23,10 @@ export default function reducer(state = initial_state, action = {}) {
 
 
 /* Action creators */
-export const addBoard = (title, category) => dispatch => {
+export const addBoard = (title, category, ideas) => dispatch => {
     dispatch({
         type: ADD_BOARD,
-        payload: axios.post('/api/boards/add', {title, category}),
+        payload: axios.post('/api/boards/add', {title, category, ideas}),
     }).then(
         (response) => {
             console.log("Adding board");
@@ -36,4 +35,4 @@ export const addBoard = (title, category) => dispatch => {
             console.log("Error adding board");
         }
     )
-}
+};

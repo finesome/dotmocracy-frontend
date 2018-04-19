@@ -204,10 +204,6 @@ export default connect(
     }
 
     render() {
-        let sections = null;
-        if (this.props.fetch_boards.load) {
-            sections = <div><h2>Loading</h2></div>;
-        }
 
         return (
             <div id="Dashboard">
@@ -219,7 +215,9 @@ export default connect(
                             <SwitcherDivider> / </SwitcherDivider>
                             <SwitcherPassive>Teams</SwitcherPassive>
                         </ViewModeWrapper>
-                        {sections}
+                        {/*{this.props.boards.map( ( section, i ) =>*/}
+                            {/*<Section section={section} key={"section-item-" + i}/>*/}
+                        {/*)}*/}
                         {this.state.sections.map( ( section, i ) =>
                             <Section section={section} key={"section-item-" + i}/>
                         )}
