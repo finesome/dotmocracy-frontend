@@ -9,13 +9,15 @@ import Decision from 'scenes/Decision';
 import Landing from 'scenes/Landing';
 import NotFound from 'scenes/NotFound';
 import Settings from 'scenes/Settings';
+import AdminPanel from 'scenes/AdminPanel';
 
 import { connect } from 'react-redux';
 import { checkAuth } from 'model';
 
 export default connect (
     store => ({
-        isAuthenticated: store.user.user !== null
+        isAuthenticated: store.user.user !== null,
+        isAdmin: store.user.user !== null && store.user.user.isAdmin
     }),
     {
         checkAuth
@@ -43,21 +45,27 @@ export default connect (
                 </div>
             );
         } else {
-            return (
-                <div>
-                    <LoginRegister />
-                    <Router>
-                        <Switch>
-                            <Route exact path="/" component={Landing} />
-                            <Route path="/dashboard" component={Dashboard}/>
-                            <Route exact path="/addboard" component={AddBoard}/>
-                            <Route path="/decision" component={Decision}/>
-                            <Route exact path="/settings" component={Settings}/>
-                            <Route component={NotFound}/>
-                        </Switch>
-                    </Router>
-                </div>
-            );
+            if (!this.props.isAdmin) {
+                return (
+                    <div>
+                        <LoginRegister />
+                        <Router>
+                            <Switch>
+                                <Route exact path="/" component={Landing} />
+                                <Route path="/dashboard" component={Dashboard}/>
+                                <Route exact path="/addboard" component={AddBoard}/>
+                                <Route path="/decision" component={Decision}/>
+                                <Route exact path="/settings" component={Settings}/>
+                                <Route component={NotFound}/>
+                            </Switch>
+                        </Router>
+                    </div>
+                );
+            } else {
+                return (
+                    <AdminPanel/>
+                );
+            }
         }
     }
 })
