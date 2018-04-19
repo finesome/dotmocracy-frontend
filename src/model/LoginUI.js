@@ -1,7 +1,7 @@
 /* Action types */
-const SHOW_LOGIN_FORM = "dotmocracy/UI/show_login_form";
-const SHOW_REGISTER_FORM = "dotmocracy/UI/show_register_form";
-const HIDE_AUTH_FORM = "dotmocracy/UI/hide_auth_form";
+const SHOW_LOGIN_FORM = "dotmocracy/UI/SHOW_LOGIN_FORM";
+const SHOW_REGISTER_FORM = "dotmocracy/UI/SHOW_REGISTER_FORM";
+const HIDE_AUTH_FORM = "dotmocracy/UI/HIDE_AUTH_FORM";
 
 /* State login_form_flags */
 export const login_form_flags = {
@@ -27,7 +27,6 @@ export default function reducer( state = initial_state, action = {} ) {
             return state;
     }
 }
-
 
 /* Action creators */
 export const showLoginForm = () => ({

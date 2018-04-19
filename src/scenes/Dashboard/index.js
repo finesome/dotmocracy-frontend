@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import colors from 'res/colors.json';
 
 import { Side as SideMenu, Sticky as HeaderMenu } from 'components/Menus';
 import Section from './components/Section';
+
+import { fetchBoards } from 'model';
 
 
 const SectionWrapper = styled.div`
@@ -41,11 +44,22 @@ const SwitcherDivider = styled( Switcher )`
     color: ${colors.dividerGray};
 `;
 
+export default connect(
+    store => ({
+        boards: store.boards.boards,
+        fetch_boards: store.dashboard.fetch_boards
+    }),
+    {
+        fetchBoards
+    }
+) (class Dashboard extends Component {
 
-export default class Dashboard extends Component {
+    constructor(props) {
+        super(props);
 
-    constructor() {
-        super();
+        console.log("Dashboard: fetch boards", this.props.fetchBoards);
+        this.props.fetchBoards();
+        
         this.state = {
             sections: [
                 {
@@ -190,16 +204,22 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        let sections = null;
+        if (this.props.fetch_boards.load) {
+            sections = <div><h2>Loading</h2></div>;
+        }
+
         return (
             <div id="Dashboard">
                 <div>
                     <SideMenu/>
-                    <SectionWrapper>
+                    <SectionWrapper>                        
                         <ViewModeWrapper>
                             <SwitcherActive>Categories</SwitcherActive>
                             <SwitcherDivider> / </SwitcherDivider>
                             <SwitcherPassive>Teams</SwitcherPassive>
                         </ViewModeWrapper>
+                        {sections}
                         {this.state.sections.map( ( section, i ) =>
                             <Section section={section} key={"section-item-" + i}/>
                         )}
@@ -209,4 +229,4 @@ export default class Dashboard extends Component {
             </div>
         );
     }
-}
+})
