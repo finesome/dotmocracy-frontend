@@ -5,7 +5,7 @@ const done = action => action+"_FULFILLED";
 const fail = action => action+"_REJECTED";
 const load = action => action+"_PENDING";
 
-const URL = "http://localhost:8080";
+const URL = "http://192.168.137.96:8080";
 
 /* Action types */
 export const FETCH_USER = "dotmocracy/AuthAPI/FETCH_USER";
