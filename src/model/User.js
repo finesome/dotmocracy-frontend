@@ -24,15 +24,17 @@ export default function reducer( state = initial_state, action = {} ) {
 
 /* Action creators */
 export const setUser = (value) => dispatch => {
+    console.log('--- Set user ---');
+    console.log(value);
     // save to localstorage
     localStorage.setItem("authorization", value.headers['authorization']);
     axios.defaults.headers.common['Authorization'] = value.headers['authorization'];
     dispatch({
         type: SET_USER,
-        payload: { user: value.data }
+        payload: value.data
     });
     dispatch( hideLoginRegisterForm() );
-    localStorage.setItem("user", value.data.username);
+    localStorage.setItem("username", value.data);
 }
 
 export const dropUser = () => dispatch => {
@@ -46,14 +48,14 @@ export const dropUser = () => dispatch => {
 }
 
 export const checkAuth = () => dispatch => {
-    const user = localStorage.getItem("user");
+    const username = localStorage.getItem("username");
     const authorization = localStorage.getItem("authorization");
 
-    if (!user) {
+    if (!username) {
         console.log("No user in local storage");
         dispatch(dropUser());
     } else {
         console.log("There is a user in local storage, restoring session");
-        dispatch(setUser({data: user, headers:{authorization}}));
+        dispatch(setUser({ data: username, headers: { authorization } }));
     }
 }

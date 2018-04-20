@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import colors from 'res/colors.json';
 
 import { Side as SideMenu, Sticky as HeaderMenu } from 'components/Menus';
+import { changeSettings } from 'model';
 
 const SectionWrapper = styled.div`
     margin-top: 64px;
@@ -81,10 +82,11 @@ const EditButton = styled.button`
 
 export default connect(
     store => ({
-        username: store.user.user.user.username
+        username: store.user.user,
+        change_settings: store.auth.change_settings
     }),
     {
-        
+        changeSettings
     }
 ) (class Settings extends Component {
 
@@ -92,19 +94,47 @@ export default connect(
         super(props);
         
         this.state = {
+            username: this.props.username,
+            password: '',
             showPassword: false
         }
     }
 
     showPasswordHandler(event) {
-        this.setState({
-            ...this.state,
+        const updatedState = {...this.state,
             showPassword: event.target.checked
-        });
+        };
+        this.setState(updatedState);
+    }
+
+    inputChangedHandler(event) {
+        console.log('--- Input changed ---');
+        console.log(event.target.value);
+        const updatedState = {...this.state,
+            [event.target.name]: event.target.value
+        };
+        this.setState(updatedState);
+
+        console.log('--- Updated state ---');
+        console.log(this.state);
+    }
+
+    saveChangesHandler(event) {
+        this.props.changeSettings(this.state.username, this.state.password);
     }
 
     render() {
-        let content = null;
+        let statusMsg = null;
+        if (this.props.change_settings.load) {
+            statusMsg = <p>Changing settings</p>;
+        } else if (this.props.change_settings.done) {
+            statusMsg = <p>Successfully changed settings</p>;
+        } else if (this.props.change_settings.fail) {
+            statusMsg = <p>Failed changing settings</p>;
+        }
+
+        console.log('--- Change settings status ---');
+        console.log(this.props.change_settings);
 
         return (
             <div id="Settings">
@@ -115,20 +145,30 @@ export default connect(
                             <SwitcherActive>Settings</SwitcherActive>
                         </ViewModeWrapper>
                         <SettingsWrapper>
-                            {content}
+                            {statusMsg}
                             <SettingWrapper>
                                 <Caption>Username: </Caption>
-                                <SettingsInput placeholder={this.props.username} />
+                                <SettingsInput 
+                                    name="username" 
+                                    value={this.state.username} 
+                                    onChange={this.inputChangedHandler.bind(this)} />
                             </SettingWrapper>
                             <SettingWrapper>
                                 <Caption>Password: </Caption>
-                                <SettingsInput type={this.state.showPassword ? "text" : "password"} />
+                                <SettingsInput 
+                                    name="password" 
+                                    value={this.state.password} 
+                                    type={this.state.showPassword ? "text" : "password"} 
+                                    onChange={this.inputChangedHandler.bind(this)} />
                                 <ShowPasswordWrapper>
-                                    <ShowPasswordCheckbox type="checkbox" name="showPasswordCheckbox" onChange={this.showPasswordHandler.bind(this)}/>
+                                    <ShowPasswordCheckbox 
+                                        type="checkbox" 
+                                        name="showPasswordCheckbox" 
+                                        onChange={this.showPasswordHandler.bind(this)}/>
                                     <ShowPasswordLabel for="showPasswordCheckbox">Show password</ShowPasswordLabel>
                                 </ShowPasswordWrapper>
                             </SettingWrapper>
-                            <EditButton>Save changes</EditButton>
+                            <EditButton onClick={this.saveChangesHandler.bind(this)}>Save changes</EditButton>
                         </SettingsWrapper>
                     </SectionWrapper>
                 </div>

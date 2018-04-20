@@ -59,173 +59,17 @@ export default connect(
 
         console.log("Dashboard: fetch boards", this.props.fetchBoards);
         this.props.fetchBoards();
-        
-        this.state = {
-            sections: [
-                {
-                    name: "No category",
-                    decisions: [
-                        {
-                            id: "0",
-                            name: "Important decision 11",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 111", score: 284 },
-                                { name: "Idea 112", score: 23 },
-                                { name: "Idea 113", score: 354 },
-                                { name: "Idea 114", score: 61 }
-                            ]
-                        },
-                        {
-                            id: "1",
-                            name: "Important decision 12",
-                            subName: "Kakashi",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 121", score: 284 },
-                                { name: "Idea 122", score: 23 },
-                                { name: "Idea 123", score: 354 }
-                            ]
-                        },
-                        {
-                            id: "2",
-                            name: "Important decision 13",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 131", score: 284 },
-                                { name: "Idea 132", score: 23 },
-                                { name: "Idea 133", score: 354 },
-                                { name: "Idea 134", score: 61 }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    name: "Category 1",
-                    decisions: [
-                        {
-                            id: "3",
-                            name: "Important decision 21",
-                            subName: "Sakashi",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 211", score: 284 },
-                                { name: "Idea 212", score: 23 },
-                                { name: "Idea 213", score: 354 },
-                                { name: "Idea 214", score: 61 }
-                            ]
-                        },
-                        {
-                            id: "4",
-                            name: "Important decision 22",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 221", score: 284 },
-                                { name: "Idea 222", score: 23 }
-                            ]
-                        },
-                        {
-                            id: "5",
-                            name: "Important decision 23",
-                            subName: "Sakashi",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 231", score: 284 },
-                                { name: "Idea 232", score: 23 },
-                                { name: "Idea 233", score: 354 },
-                                { name: "Idea 214", score: 61 }
-                            ]
-                        },
-                        {
-                            id: "6",
-                            name: "Important decision 24",
-                            subName: "Sakashi",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 231", score: 284 },
-                                { name: "Idea 232", score: 23 },
-                                { name: "Idea 233", score: 354 },
-                                { name: "Idea 214", score: 61 },
-                                { name: "Idea 214", score: 105 }
-                            ]
-                        },
-                        {
-                            id: "7",
-                            name: "Important decision 25",
-                            subName: "Sakashi",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 231", score: 284 },
-                                { name: "Idea 232", score: 23 },
-                                { name: "Idea 233", score: 354 }
-                            ]
-                        },
-                        {
-                            id: "8",
-                            name: "Important decision 26",
-                            subName: "Sakashi",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 231", score: 284 },
-                                { name: "Idea 232", score: 23 },
-                                { name: "Idea 233", score: 354 }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name: "Category 2",
-                    decisions: [
-                        {
-                            id: "9",
-                            name: "Important decision 31",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 311", score: 284 },
-                                { name: "Idea 312", score: 23 },
-                                { name: "Idea 313", score: 354 },
-                                { name: "Idea 314", score: 61 }
-                            ]
-                        },
-                        {
-                            id: "10",
-                            name: "Important decision 32",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 321", score: 284 },
-                                { name: "Idea 322", score: 23 },
-                                { name: "Idea 323", score: 354 },
-                                { name: "Idea 324", score: 61 }
-                            ]
-                        },
-                        {
-                            id: "11",
-                            name: "Important decision 33",
-                            isTeam: true,
-                            ideas: [
-                                { name: "Idea 331", score: 284 },
-                                { name: "Idea 332", score: 23 },
-                                { name: "Idea 333", score: 354 },
-                                { name: "Idea 334", score: 61 }
-                            ]
-                        },
-                    ]
-                }
-            ]
-        }
     }
 
     render() {        
         let boards = null;
         if (this.props.boards) {
-
-            console.log("this.props.boards:", this.props.boards);
-
+            console.log('--- Fetched boards ---');
+            console.log(this.props.boards);
+            
             boards = this.props.boards.boards.map( ( section, i ) =>
                 <Section section={section} key={"section-item-" + i}/>
             );
-            // console.log("Boards:", boards);
-            // console.log("Type of boards:", typeof boards);
         }
 
         return (
@@ -235,11 +79,7 @@ export default connect(
                     <SectionWrapper>                        
                         <ViewModeWrapper>
                             <SwitcherActive>Boards</SwitcherActive>                            
-                        </ViewModeWrapper>
-                        {/* {this.state.sections.map( ( section, i ) => */}
-                        {/* {this.props.boards.map( ( section, i ) =>
-                            <Section section={section} key={"section-item-" + i}/>
-                        )} */}
+                        </ViewModeWrapper>                        
                         {boards}
                     </SectionWrapper>
                 </div>

@@ -92,7 +92,7 @@ export default connect(
 
         console.log("Decision id:", id);
 
-        console.log("Fetching ideas of board 1");
+        console.log("Fetching ideas of board", id);
         this.props.fetchIdeas(id);
 
         this.state = {

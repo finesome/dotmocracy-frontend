@@ -73,7 +73,7 @@ const UserInfoWrapper = styled.div`
 
 export default connect (
     store => ({
-        username: store.user.user.user.username
+        username: store.user.user
     }),
     {
         

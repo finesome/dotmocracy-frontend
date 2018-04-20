@@ -12,9 +12,10 @@ const StyledInput = styled.input`
     width: 100%;
     background:none;
     font-size: ${props => props.fontSize};
+    border-bottom: 1px solid ${colors.accent};
     &:focus {
         outline: none;
-        border-bottom: 1px solid ${colors.accent};
+        // border-bottom: 1px solid ${colors.accent};
     }
     ::placeholder {
         font-size: ${props => props.fontSize};

@@ -48,7 +48,8 @@ export default connect(
         this.logs = [
             { time: 1, user: "Gaukhar", action: "CRACK", agent: "Mozilla" },
             { time: 2, user: "Makar", action: "ADD", agent: "Yandex" },
-            { time: 3, user: "Aslan", action: "LOGIN", agent: "Chrome" }
+            { time: 3, user: "Aslan", action: "LOGIN", agent: "Chrome" },
+            // { id, whattime, who, what, agent }
         ];
         this.state = {
             logs: this.logs,

@@ -48,7 +48,7 @@ export default class Idea extends Component {
                 </Header>
                 <Description>
                         <TextArea type="optionDesc" name="optionDesc" fontSize="18px"
-                                  placeholder="Add option description. You can list advantages and disadvantages of this option."
+                                  placeholder="Option description."
                                   value={this.props.idea.desc}
                                   onChange={(event) => this.props.updateDesc(this.props.index, event.target.value)}/>
                 </Description>

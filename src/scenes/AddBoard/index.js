@@ -46,6 +46,7 @@ const DecisionNameWrapper = styled.div`
 const DecisionName = styled.div`
     line-height: 36px;
     font-stretch: condensed;
+    margin-right: 24px;
 `;
 
 const DecisionCategory = styled.div`

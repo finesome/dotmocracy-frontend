@@ -12,6 +12,7 @@ export const FETCH_USER = "dotmocracy/AuthAPI/FETCH_USER";
 export const LOGIN_USER = "dotmocracy/AuthAPI/LOGIN_USER";
 export const REGISTER_USER = "dotmocracy/AuthAPI/REGISTER_USER";
 export const LOGOUT_USER = "dotmocracy/AuthAPI/LOGOUT_USER"
+export const CHANGE_SETTINGS = "dotmocracy/AuthAPI/CHANGE_SETTINGS";
 
 /* Reducer */
 const initial_state = {
@@ -19,6 +20,7 @@ const initial_state = {
     login_user: {load: null, fail: null, done: null},
     register_user: {load: null, fail: null, done: null},
     logout_user: {load: null, fail: null, done: null},  
+    change_settings: {load: null, fail: null, done: null},
 };
 
 export default function reducer(state = initial_state, action = {}) {
@@ -38,6 +40,10 @@ export default function reducer(state = initial_state, action = {}) {
       case done(LOGOUT_USER): return {...state, logout_user: {done: true}};
       case fail(LOGOUT_USER): return {...state, logout_user: {fail: true}};
       case load(LOGOUT_USER): return {...state, logout_user: {load: true}};
+
+      case done(CHANGE_SETTINGS): return {...state, change_settings: {done: true}};
+      case fail(CHANGE_SETTINGS): return {...state, change_settings: {fail: true}};
+      case load(CHANGE_SETTINGS): return {...state, change_settings: {load: true}};
       default: return state;
     }
   }
@@ -62,12 +68,12 @@ export const fetchUser = (user) => dispatch => {
 export const loginUser = (username, password) => dispatch => {
     dispatch({
         type: LOGIN_USER,
-        payload: axios.post(`${URL}/api/user/login`, {username, password})
+        payload: axios.post(`${URL}/api/user/login`, { username, password })
     }).then(
         response => {            
             console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGHHHH");
             console.log(response);
-            dispatch(setUser(response.value));
+            dispatch(setUser({ data: response.value.data.username, headers: response.value.headers }));
         },
         error => {
             console.log("Wrong credentials", error);
@@ -79,7 +85,7 @@ export const loginUser = (username, password) => dispatch => {
 export const registerUser = (username, password) => dispatch => {
     dispatch({
         type: REGISTER_USER,
-        payload: axios.post(`${URL}/api/user/register`, {username, password})
+        payload: axios.post(`${URL}/api/user/register`, { username, password })
     })
     .then(
         response => {
@@ -103,6 +109,22 @@ export const logoutUser = () => dispatch => {
         }, 
         error => {
             console.log("Wrong credentials", error);
+            // TODO: dispatch showErrorMessage(response.statusText) or smth
+        }
+    )
+}
+
+export const changeSettings = (username, password) => dispatch => {
+    dispatch({
+        type: CHANGE_SETTINGS,
+        payload: axios.post(`${URL}/api/user/change`, { username, password })
+    })
+    .then(
+        response => {
+            console.log("Successfully changed");
+        }, 
+        error => {
+            console.log("Error occurred");;
             // TODO: dispatch showErrorMessage(response.statusText) or smth
         }
     )

@@ -60,11 +60,12 @@ export default class Decision extends Component {
                         <span>{idea.score}</span>
                     </Idea> )}
                 </IdeaList> */}
-                <Info>{
+                
+                {/* <Info>{
                     this.props.decision.isTeam
                         ? (this.props.decision.subName) ? "Team " + this.props.decision.subName : "No team"
                         : (this.props.decision.subName) ? "Category " + this.props.decision.subName : "Unsorted"
-                }</Info>
+                }</Info> */}
             </DecisionWrapper>
         );
     }

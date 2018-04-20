@@ -9,6 +9,7 @@ const StyledDiv = styled.div`
 const StyledInput = styled.textarea`
     border: none;
     width: 100%;
+    height: 100px;
     background:none;
     font-size: ${props => props.fontSize};
     ::placeholder {
