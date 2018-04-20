@@ -46,9 +46,9 @@ export default connect(
         super( props );
         // this.state.logs = [...this.props.logs];
         this.logs = [
-            { time: 1, user: "Gaukhar", action: "PIDR", agent: "Mozilla" },
+            { time: 1, user: "Gaukhar", action: "CRACK", agent: "Mozilla" },
             { time: 2, user: "Makar", action: "ADD", agent: "Yandex" },
-            { time: 3, user: "Aslan", action: "LOH", agent: "Chrome" }
+            { time: 3, user: "Aslan", action: "LOGIN", agent: "Chrome" }
         ];
         this.state = {
             logs: this.logs,
