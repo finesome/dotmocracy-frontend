@@ -215,12 +215,7 @@ export default connect(
         }
     }
 
-    render() {
-        let sections = null;
-        // if (this.props.fetch_boards.load) {
-        //     sections = <div><h2>Loading</h2></div>;
-        // }
-
+    render() {        
         let boards = null;
         if (this.props.boards) {
 
@@ -239,11 +234,8 @@ export default connect(
                     <SideMenu/>
                     <SectionWrapper>                        
                         <ViewModeWrapper>
-                            <SwitcherActive>Boards</SwitcherActive>
-                            {/* <SwitcherDivider> / </SwitcherDivider>
-                            <SwitcherPassive>Teams</SwitcherPassive> */}
+                            <SwitcherActive>Boards</SwitcherActive>                            
                         </ViewModeWrapper>
-                        {sections}
                         {/* {this.state.sections.map( ( section, i ) => */}
                         {/* {this.props.boards.map( ( section, i ) =>
                             <Section section={section} key={"section-item-" + i}/>
