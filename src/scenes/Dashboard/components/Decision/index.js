@@ -54,12 +54,12 @@ export default class Decision extends Component {
         return (
             <DecisionWrapper>
                 <Header>{this.props.decision.name}</Header>
-                <IdeaList>
+                {/* <IdeaList>
                     {this.props.decision.ideas.map( ( idea, i ) => <Idea key={"idea-item-" + i}>
                         <span>{idea.name}</span>
                         <span>{idea.score}</span>
                     </Idea> )}
-                </IdeaList>
+                </IdeaList> */}
                 <Info>{
                     this.props.decision.isTeam
                         ? (this.props.decision.subName) ? "Team " + this.props.decision.subName : "No team"

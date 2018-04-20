@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { hideLoginRegisterForm } from '.'
 
 /* Action types */
@@ -22,35 +23,37 @@ export default function reducer( state = initial_state, action = {} ) {
 
 
 /* Action creators */
-export const setUser = (user) => {
-    return dispatch => {
-        dispatch({
-            type: SET_USER,
-            payload: {user}
-        });
-        dispatch( hideLoginRegisterForm() );
-    }
+export const setUser = (value) => dispatch => {
+    // save to localstorage
+    localStorage.setItem("authorization", value.headers['authorization']);
+    axios.defaults.headers.common['Authorization'] = value.headers['authorization'];
+    dispatch({
+        type: SET_USER,
+        payload: { user: value.data }
+    });
+    dispatch( hideLoginRegisterForm() );
+    localStorage.setItem("user", value.data.user);
 }
 
-export const dropUser = () => {
-    return dispatch => {
-        dispatch({
-            type: DROP_USER
-        });
-        localStorage.removeItem("user");
-    }
+export const dropUser = () => dispatch => {
+    // remove from localstorage
+    localStorage.removeItem("authorization");
+    axios.defaults.headers.common['Authorization'] = '';
+    dispatch({
+        type: DROP_USER
+    });
+    localStorage.removeItem("user");
 }
 
-export const checkAuth = () => {
-    return dispatch => {
-        const user = localStorage.getItem('user');
-        if (!user) {
-            console.log("No user in local storage");
-            dispatch(dropUser());
-        } else {
-            console.log("There IS a user in local storage");
-            dispatch(setUser(user));
-        }
-        // smth with holding?
+export const checkAuth = () => dispatch => {
+    const user = localStorage.getItem("user");
+    const authorization = localStorage.getItem("authorization");
+
+    if (!user) {
+        console.log("No user in local storage");
+        dispatch(dropUser());
+    } else {
+        console.log("There is a user in local storage, restoring session");
+        dispatch(setUser({data: user, headers:{authorization}}));
     }
 }

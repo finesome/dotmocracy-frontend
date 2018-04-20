@@ -7,6 +7,8 @@ const done = action => action+"_FULFILLED";
 const fail = action => action+"_REJECTED";
 const load = action => action+"_PENDING";
 
+const URL = "http://192.168.137.131:8080";
+
 /* Action types */
 const FETCH_BOARDS = "dotmocracy/Dashboard/FETCH_BOARDS";
 const FETCH_IDEAS = "dotmocracy/Dashboard/FETCH_IDEAS";
@@ -15,7 +17,6 @@ const FETCH_IDEAS = "dotmocracy/Dashboard/FETCH_IDEAS";
 const initial_state = {
     fetch_boards: {load: null, fail: null, done: null},
     fetch_ideas: {load: null, fail: null, done: null},
-    boards: null
 };
 export default function reducer(state = initial_state, action = {}) {
     switch (action.type) {
@@ -35,17 +36,24 @@ export const fetchBoards = () => dispatch => {
     console.log("Fetching boards");
     dispatch({
         type: FETCH_BOARDS,
-        payload: axios.get(`/api/boards`)
+        payload: axios.get(`${URL}/api/boards`)
     }).then(
         (response) => {
             console.log("Response:", response.value.data);
             console.log("Re-grouping response with lodash");
             let grouped = lodash.groupBy(response.value.data, "category");
             console.log("Grouped:", grouped);
-            dispatch(setBoards(grouped));
+
+            let array = [];
+            for (let key in grouped) {
+                let entry = {name: key, decisions: grouped[key]};
+                array.push(entry);
+            }
+
+            dispatch(setBoards(array));
         }, 
         (error) => { 
-            console.log("Error fetching boards:", error)
+            console.log("Error fetching boards:", error);
             // TODO: dispatch showErrorMessage(response.statusText) or smth
         } 
     )
@@ -56,11 +64,12 @@ export const fetchIdeas = (board_id) => dispatch => {
     console.log("Fetching ideas");
     dispatch({
         type: FETCH_IDEAS,
-        payload: axios.get(`/api/boards/${board_id}/ideas`)
+        payload: axios.get(`${URL}/api/boards/${board_id}/ideas`)
     }).then(
         response => {
-            console.log(response.data);
-            dispatch(setIdeas(response.data));
+            console.log("IDEEEEEEEEEEEEEEEEEEEEEEEEAAAAAAAAAAAAAAS");
+            console.log(response.value.data);
+            dispatch(setIdeas(response.value.data));
         },
         error => { 
             console.log("Error fetching ideas:", error) 

@@ -6,6 +6,7 @@ import TextInput from 'components/TextInput';
 import { DefaultButton as Button } from 'components/Buttons';
 import Link from 'components/Link';
 import { Card } from 'components/Cards';
+import penguin from 'res/images/penguin.png';
 
 
 import { hideLoginRegisterForm, showRegisterForm, showLoginForm, loginUser, registerUser, login_form_flags } from 'model'
@@ -27,11 +28,10 @@ const Modal = styled( Card )`
     width: 320px;
 `;
 
-const Logo = styled.div`
-    width: 200px;
-    height: 80px;
+const LogoImage = styled.img`
+    display: block;
     margin: 8px auto;
-    background-color: #944040;
+    height: 300px;
 `;
 
 const FormSubmitWrapper = styled.div`
@@ -125,7 +125,7 @@ export default connect(store => ({
                     <Modal onClick={event => {
                         event.stopPropagation()
                     }}>
-                        <Logo/>
+                        <LogoImage src={penguin}/>
                         <form>
                             <TextInput type="email" name="email" hint="Email"
                                        onChange={this.inputChangeHandler.bind( this )}/>
