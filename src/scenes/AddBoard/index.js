@@ -139,7 +139,10 @@ export default connect( null, {
     addIdeaHandler() {
         let newState = {};
         newState.ideas = [...this.state.ideas];
-        maxId = this.state.ideas[-1].id + 1;
+        let maxId = 0;
+        if (this.state.ideas.length != 0) {
+            maxId = this.state.ideas[this.state.ideas.length - 1].id + 1;
+        }
         newState.ideas.push( { name: "", desc: "", id: maxId } );
         this.setState( newState );
     }

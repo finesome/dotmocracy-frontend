@@ -24,7 +24,9 @@ export default connect(
     }
 )( class App extends Component {
 
-    componentWillMount() {
+    constructor(props) {
+        super(props);
+        console.log("--- Check authentication ---");
         this.props.checkAuth();
     }
 
