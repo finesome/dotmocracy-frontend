@@ -72,8 +72,12 @@ export const fetchIdeas = (board_id) => dispatch => {
             dispatch(setIdeas(response.value.data));
         },
         error => { 
-            console.log("Error fetching ideas:", error) 
+            console.log("Error fetching ideas:", error);
             // TODO: dispatch showErrorMessage(response.statusText) or smth
+
+            dispatch(setIdeas({
+
+            }));
         } 
     )
 }

@@ -90,26 +90,27 @@ export default connect( null, {
         super( props );
         this.state = {
             ideas: [
-                { name: "", desc: "" },
-                { name: "", desc: "" },
-                { name: "", desc: "" }
+                { name: "", desc: "", id: 0 },
+                { name: "", desc: "", id: 1 },
+                { name: "", desc: "", id: 2 }
             ]
         }
     }
 
     submitForm( event ) {
         event.preventDefault();
-        this.props.addBoard( this.state.name, this.state.category, this.state.ideas );
+        let ideas = this.state.ideas.map((idea) => ({name: idea.name, desc: idea.desc}));
+        this.props.addBoard( this.state.name, this.state.category, ideas );
     }
 
     nameChangeHandler( event ) {
-        let newState = {...this.state};
+        let newState = { ...this.state };
         newState.name = event.target.value;
         this.setState( newState );
     }
 
     categoryChangeHandler( event ) {
-        let newState = {...this.state};
+        let newState = { ...this.state };
         newState.category = event.target.value;
         this.setState( newState );
     }
@@ -138,7 +139,8 @@ export default connect( null, {
     addIdeaHandler() {
         let newState = {};
         newState.ideas = [...this.state.ideas];
-        newState.ideas.push( { name: "", desc: "" } );
+        maxId = this.state.ideas[-1].id + 1;
+        newState.ideas.push( { name: "", desc: "", id: maxId } );
         this.setState( newState );
     }
 
@@ -165,7 +167,7 @@ export default connect( null, {
                         </DecisionNameWrapper>
                         <IdeasWrapper colCount={Math.round( (this.state.width - 240) / 320 )}>
                             {this.state.ideas.map( ( idea, i ) =>
-                                <IdeaWrapper key={"idea-item-" + i}>
+                                <IdeaWrapper key={"idea-item-" + idea.id}>
                                     <Idea idea={idea} index={i}
                                           deleteIdea={this.deleteHandler.bind( this )}
                                           updateName={this.updateNameHandler.bind( this )}

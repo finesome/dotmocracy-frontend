@@ -14,7 +14,7 @@ import AdminPanel from 'scenes/AdminPanel';
 import { connect } from 'react-redux';
 import { checkAuth } from 'model';
 
-export default connect (
+export default connect(
     store => ({
         isAuthenticated: store.user.user !== null,
         isAdmin: store.user.user !== null && store.user.user.isAdmin
@@ -22,20 +22,20 @@ export default connect (
     {
         checkAuth
     }
-) (class App extends Component {
-    
+)( class App extends Component {
+
     componentWillMount() {
         this.props.checkAuth();
     }
 
     render() {
-        const redirect = <Redirect to={{path: "/"}}/>;
-        console.log("isAuthenticated:", this.props.isAuthenticated);
+        const redirect = <Redirect to={{ path: "/" }}/>;
+        console.log( "isAuthenticated:", this.props.isAuthenticated );
 
-        if (!this.props.isAuthenticated) {
+        if ( !this.props.isAuthenticated ) {
             return (
                 <div>
-                    <LoginRegister />
+                    <LoginRegister/>
                     <Router>
                         <Switch>
                             <Route exact path="/" component={Landing}/>
@@ -45,13 +45,13 @@ export default connect (
                 </div>
             );
         } else {
-            if (!this.props.isAdmin) {
+            if ( !this.props.isAdmin ) {
                 return (
                     <div>
-                        <LoginRegister />
+                        <LoginRegister/>
                         <Router>
                             <Switch>
-                                <Route exact path="/" component={Landing} />
+                                <Route exact path="/" component={Landing}/>
                                 <Route path="/dashboard" component={Dashboard}/>
                                 <Route exact path="/addboard" component={AddBoard}/>
                                 <Route exact path="/logout" component={Landing}/>
@@ -64,9 +64,13 @@ export default connect (
                 );
             } else {
                 return (
-                    <AdminPanel/>
+                    <Router>
+                        <Switch>
+                            <Route component={AdminPanel}/>
+                        </Switch>
+                    </Router>
                 );
             }
         }
     }
-})
+} )

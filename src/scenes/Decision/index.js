@@ -98,32 +98,7 @@ export default connect(
         this.state = {
             decision: {
                 name: "Important decision 11",
-                ideas: [
-                    {
-                        name: "Idea 111",
-                        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh leo, sagittis non est et, auctor accumsan ligula. Suspendisse imperdiet dapibus urna, sed tincidunt erat semper eu.",
-                        score: 100,
-                        myScore: 20
-                    },
-                    {
-                        name: "Idea 112",
-                        desc: "Maecenas vel risus ultricies, molestie lacus eget, porttitor elit. Phasellus varius, arcu ac accumsan condimentum, justo magna imperdiet dui, at euismod est ante at tortor. Ut elit dui, sagittis faucibus massa et, imperdiet venenatis lacus. Duis ut laoreet turpis. Praesent non sem libero.",
-                        score: 100,
-                        myScore: 40
-                    },
-                    {
-                        name: "Idea 113",
-                        desc: "Quisque ornare dui quis fringilla vulputate. Pellentesque hendrerit, magna a posuere cursus, ante dolor facilisis augue, quis venenatis purus ipsum a nisl.",
-                        score: 100,
-                        myScore: 30
-                    },
-                    {
-                        name: "Idea 114",
-                        desc: "Pellentesque aliquet ultricies gravida. Maecenas facilisis quis enim eu pharetra. Donec risus odio, viverra eu viverra nec, tristique eu nulla.",
-                        score: 100,
-                        myScore: 30
-                    }
-                ]
+                ideas: [...this.props.ideas]
             }
         };
         this.state.decision.ideas.forEach( ( idea, i ) => {
@@ -206,7 +181,9 @@ export default connect(
         window.removeEventListener( "resize", this.updateDimensions.bind( this ) );
     }
 
-    submitForm() {}
+    submitForm() {
+        // this.props.sendVotes();
+    }
 
     onSliderChangeHandler( key, value ) {
         let newStateDecisionIdeas = this.state.decision.ideas;
