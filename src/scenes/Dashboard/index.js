@@ -66,6 +66,7 @@ export default connect(
                     name: "No category",
                     decisions: [
                         {
+                            id: "0",
                             name: "Important decision 11",
                             isTeam: true,
                             ideas: [
@@ -76,6 +77,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "1",
                             name: "Important decision 12",
                             subName: "Kakashi",
                             isTeam: true,
@@ -86,6 +88,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "2",
                             name: "Important decision 13",
                             isTeam: true,
                             ideas: [
@@ -101,6 +104,7 @@ export default connect(
                     name: "Category 1",
                     decisions: [
                         {
+                            id: "3",
                             name: "Important decision 21",
                             subName: "Sakashi",
                             isTeam: true,
@@ -112,6 +116,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "4",
                             name: "Important decision 22",
                             isTeam: true,
                             ideas: [
@@ -120,6 +125,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "5",
                             name: "Important decision 23",
                             subName: "Sakashi",
                             isTeam: true,
@@ -131,6 +137,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "6",
                             name: "Important decision 24",
                             subName: "Sakashi",
                             isTeam: true,
@@ -143,6 +150,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "7",
                             name: "Important decision 25",
                             subName: "Sakashi",
                             isTeam: true,
@@ -153,6 +161,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "8",
                             name: "Important decision 26",
                             subName: "Sakashi",
                             isTeam: true,
@@ -168,6 +177,7 @@ export default connect(
                     name: "Category 2",
                     decisions: [
                         {
+                            id: "9",
                             name: "Important decision 31",
                             isTeam: true,
                             ideas: [
@@ -178,6 +188,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "10",
                             name: "Important decision 32",
                             isTeam: true,
                             ideas: [
@@ -188,6 +199,7 @@ export default connect(
                             ]
                         },
                         {
+                            id: "11",
                             name: "Important decision 33",
                             isTeam: true,
                             ideas: [
@@ -204,6 +216,22 @@ export default connect(
     }
 
     render() {
+        let sections = null;
+        // if (this.props.fetch_boards.load) {
+        //     sections = <div><h2>Loading</h2></div>;
+        // }
+
+        let boards = null;
+        if (this.props.boards) {
+
+            console.log("this.props.boards:", this.props.boards);
+
+            boards = this.props.boards.boards.map( ( section, i ) =>
+                <Section section={section} key={"section-item-" + i}/>
+            );
+            // console.log("Boards:", boards);
+            // console.log("Type of boards:", typeof boards);
+        }
 
         return (
             <div id="Dashboard">
@@ -211,16 +239,16 @@ export default connect(
                     <SideMenu/>
                     <SectionWrapper>                        
                         <ViewModeWrapper>
-                            <SwitcherActive>Categories</SwitcherActive>
-                            <SwitcherDivider> / </SwitcherDivider>
-                            <SwitcherPassive>Teams</SwitcherPassive>
+                            <SwitcherActive>Boards</SwitcherActive>
+                            {/* <SwitcherDivider> / </SwitcherDivider>
+                            <SwitcherPassive>Teams</SwitcherPassive> */}
                         </ViewModeWrapper>
-                        {/*{this.props.boards.map( ( section, i ) =>*/}
-                            {/*<Section section={section} key={"section-item-" + i}/>*/}
-                        {/*)}*/}
-                        {this.state.sections.map( ( section, i ) =>
+                        {sections}
+                        {/* {this.state.sections.map( ( section, i ) => */}
+                        {/* {this.props.boards.map( ( section, i ) =>
                             <Section section={section} key={"section-item-" + i}/>
-                        )}
+                        )} */}
+                        {boards}
                     </SectionWrapper>
                 </div>
                 <HeaderMenu/>

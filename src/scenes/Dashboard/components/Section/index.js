@@ -47,6 +47,14 @@ const DecisionWrapper = styled.div`
     break-inside: avoid;
 `;
 
+const StyledLink = styled(Link)`
+    color: black;
+
+    &.visited {
+        color: black;
+    }
+`;
+
 
 export default class Section extends Component {
 
@@ -56,12 +64,13 @@ export default class Section extends Component {
                 <SectionName>{this.props.section.name}</SectionName>
                 <DecisionsWrapper colCount={Math.round( (this.state.width - 240) / 320 )}>
                     {this.props.section.decisions.map( ( decision, i ) =>
-                        <Link to="/decision"
+                        <StyledLink to={"/decision/" + decision.id}
+                            key={"link-item" + i}
                             style={{textDecoration: 'none'}}>
                             <DecisionWrapper key={"decision-item-wrapper" + i}>
                                 <Decision decision={decision} key={"decision-item-" + i}/>
                             </DecisionWrapper>
-                        </Link>
+                        </StyledLink>
                     )}
                 </DecisionsWrapper>
             </SectionWrapper>

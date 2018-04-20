@@ -65,11 +65,12 @@ export default connect(null,
             // { icon: icon_group, text: "teams", link: '/' },
             { icon: icon_add, text: "create new board", link: '/addboard' },
             { icon: icon_settings, text: "settings", link: '/settings' },
-            { icon: icon_logout, text: "log out", link: '/' }
+            { icon: icon_logout, text: "log out", link: '/logout' }
         ];
     }
 
     logoutHandler() {
+        console.log("Logging out");
         this.props.logoutUser();
     }
 
@@ -100,11 +101,12 @@ export default connect(null,
                         <MenuItemLabel>{this.menuItemsOrder[2].text}</MenuItemLabel>
                     </MenuItem>
                 </Link>
-                <MenuItem key="menu-item-3"
-                    onClick={this.logoutHandler.bind(this)}>
-                    <MenuItemIcon src={this.menuItemsOrder[3].icon}/>
-                    <MenuItemLabel>{this.menuItemsOrder[3].text}</MenuItemLabel>
-                </MenuItem>
+                    <MenuItem 
+                        key="menu-item-3"
+                        onClick={this.logoutHandler.bind(this)}>
+                        <MenuItemIcon src={this.menuItemsOrder[3].icon}/>
+                        <MenuItemLabel>{this.menuItemsOrder[3].text}</MenuItemLabel>
+                    </MenuItem>
 
                 {/* {this.menuItemsOrder.map( ( item, i ) => (
                     <Link to={{ pathname: item.link }} key={"menu-item-" + i}
