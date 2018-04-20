@@ -32,7 +32,7 @@ export const setUser = (value) => dispatch => {
         payload: { user: value.data }
     });
     dispatch( hideLoginRegisterForm() );
-    localStorage.setItem("user", value.data.user);
+    localStorage.setItem("user", value.data.username);
 }
 
 export const dropUser = () => dispatch => {
