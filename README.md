@@ -1,5 +1,5 @@
 # dotmocracy-frontend
-Front-end part of Software Engineering project
+Frontend for Software Engineering project
 ## How to setup
 **Install nodejs v9.4.0 and npm v5.6.0**
 
